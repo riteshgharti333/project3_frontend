@@ -221,34 +221,34 @@ export const client_reviews = [
   {
     img: reviewImg4,
     review_title: "Had a great experience with them Wonderful team ❤️",
-    review_name: "Radhika & Dr. Mayur",
+    review_name: "Chirag & Tanvika",
   },
 
   {
     img: reviewImg5,
     review_title:
       "TK Production Film and Team is definitely a 50 out of 10!! Especially The Owner of Production Taufeq Khan, We really appreciate and thank you for capturing so many special, natural and happy moments of our day perfectly and we will treasure them forever. From the beginning through to the end of the event the team offered endless support, advice and guidance. The team is extremely friendly and cooperative. You were just awesome and made our day even more special. We felt so comfortable with you and can't express how grateful we are. Your professionalism and hard work shines through every frame and picture. The quality, editing, creativity, and the fact that the video really told the story of the event in such a perfect way, was amazing and mesmerizing. The team is nothing but dedicated and highly motivated promising photographers. The service of TK Production Film is highly recommended to everyone. Thank You Once Again For Everything Taufeqbhai.",
-    review_name: "Moin Mansuri",
+    review_name: "Radhika & Dr. Mayur",
   },
 
   {
     img: reviewImg6,
     review_title: "Great work and good quality videos and pics really love it",
-    review_name: "Aniket Solanki",
+    review_name: "Moin Mansuri",
   },
 
   {
     img: reviewImg7,
     review_title:
-      "BAST PHOTOGRAPHY. BAST VIDEO GRAPHIC GOOD PARSAN (V GOOD) Positive Responsiveness, Quality, Professionalism, Value",
-    review_name: "Samir & Sumera",
+      "BEST PHOTOGRAPHY. BEST VIDEO GRAPHIC GOOD PARSAN (V GOOD) Positive Responsiveness, Quality, Professionalism, Value",
+    review_name: "Aniket Solanki",
   },
 
   {
     img: reviewImg8,
     review_title:
       "Experience with TK Production Film We had the pleasure of working with TK Production Film for our wedding, and we couldn't be happier with the result! From start to finish, the team was professional, easy to work with, and truly understood our vision. The final video exceeded all of our expectations, capturing every special moment in a beautiful and cinematic way. The editing was flawless, and they managed to weave in all the little details that made our day so memorable",
-    review_name: "Chirag & Tanvika",
+    review_name: "Samir & Sumera",
   },
 
   {
