@@ -7,12 +7,10 @@ import "swiper/css/navigation";
 import { photoAlbums } from "../../assets/data";
 import { useEffect, useState } from "react";
 
-
 const PhotoAlbums = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [initialized, setInitialized] = useState(false);
 
-  // Set the animation trigger after component mounts
   useEffect(() => {
     setInitialized(true);
   }, []);
@@ -26,8 +24,8 @@ const PhotoAlbums = () => {
 
       <div className="photoAlbums-cards">
         <Swiper
-          slidesPerView={1}
-          centeredSlides={true}
+          slidesPerView={2}
+          centeredSlides={false}
           spaceBetween={20}
           loop={true}
           speed={3000}
@@ -49,7 +47,7 @@ const PhotoAlbums = () => {
               spaceBetween: 15,
             },
             1024: {
-              slidesPerView: 1,
+              slidesPerView: 2,
               spaceBetween: 15,
             },
           }}

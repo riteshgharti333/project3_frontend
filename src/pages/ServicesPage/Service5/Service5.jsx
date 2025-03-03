@@ -2,12 +2,16 @@ import "./Service5.scss";
 
 import ServicePageSidebar from "../ServicePageSidebar/ServicePageSidebar";
 
-import details from "../../../assets/images/details.jpg";
-
 import { FaCheck } from "react-icons/fa";
 import ServiceContact from "../../../components/ServiceContact/ServiceContact";
-import { service1Data, service1Steps, service5Data, service5Steps } from "../../../assets/servicesData";
+import { service5Data, service5Steps } from "../../../assets/servicesData";
 import { useRef } from "react";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectFade, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/effect-fade";
+import { servicesImgs } from "../../../assets/data";
 
 const Service5 = () => {
 
@@ -36,11 +40,27 @@ const Service5 = () => {
 
         <div className="service5-container-content" ref={contentRef}>
           <div className="service5-container-content-top">
-            <img src={details} alt="" />
-            <h1>Civil Marriage Photography by TK Production Films</h1>
+          <div className="services-img-slide">
+              <Swiper
+                modules={[EffectFade, Autoplay]}
+                effect="fade"
+                loop={true}
+                speed={1200}
+                autoplay={{ delay: 3000, disableOnInteraction: false }}
+                pagination={{ clickable: true }}
+                className="services-slide"
+              >
+                {servicesImgs.map((item, index) => (
+                  <SwiperSlide key={index} className="service_slide">
+                    <img src={item.img} alt="services" />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+            <h1>Civil Marriage Photography by TK Production Film</h1>
             <p>
               A civil marriage is a beautiful and intimate celebration of love,
-              and at TK Production Films, we specialize in capturing its essence
+              and at TK Production Film, we specialize in capturing its essence
               with elegance and authenticity. Whether it’s a simple registry
               ceremony or a grand celebration with loved ones, our expert
               photography ensures every heartfelt moment is preserved forever.
@@ -78,7 +98,7 @@ const Service5 = () => {
             </ul>
 
             <p>
-            At TK Production Films, we turn your civil marriage into a timeless visual story. Let us capture your love with beauty and elegance!
+            At TK Production Film, we turn your civil marriage into a timeless visual story. Let us capture your love with beauty and elegance!
             </p>
           </div>
         </div>

@@ -1,19 +1,8 @@
-import review_img from "../assets/images/review.jpg";
 import card_1 from "../assets/images/1.jpg";
 import card_2 from "../assets/images/2.jpg";
 
-import m1 from "../assets/images/m1.jpg";
-import m2 from "../assets/images/m2.jpg";
-import m3 from "../assets/images/m3.jpg";
-
-import banner_img1 from "../assets/images/7.jpg";
-import banner_img2 from "../assets/images/8.jpg";
-import banner_img3 from "../assets/images/9.jpg";
-
 import bg12 from "../assets/images/12.jpg";
 import bg2 from "../assets/images/bg2.jpg";
-
-import album_img from "../assets/images/5.jpg";
 
 // review img
 import reviewImg1 from "../assets/images/reviewimg/IMG_9016-_1_.webp";
@@ -63,13 +52,17 @@ import team3 from "../assets/images/teamImgs/team3.jpg";
 import team4 from "../assets/images/teamImgs/team4.jpg";
 
 //photo albums
-import photoAlbums1 from "../assets/images/photoAlbums/photoAlbum1.jpeg";
-import photoAlbums2 from "../assets/images/photoAlbums/photoAlbum2.jpeg";
-import photoAlbums3 from "../assets/images/photoAlbums/photoAlbum3.jpeg";
-import photoAlbums4 from "../assets/images/photoAlbums/photoAlbum4.jpeg";
-import photoAlbums5 from "../assets/images/photoAlbums/photoAlbum5.jpeg";
-import photoAlbums6 from "../assets/images/photoAlbums/photoAlbum6.jpeg";
-import photoAlbums7 from "../assets/images/photoAlbums/photoAlbum7.jpeg";
+import photoAlbums8 from "../assets/images/photoAlbums/photoAlbum8.jpeg";
+import photoAlbums9 from "../assets/images/photoAlbums/photoAlbum9.jpeg";
+import photoAlbums10 from "../assets/images/photoAlbums/photoAlbum10.jpeg";
+import photoAlbums11 from "../assets/images/photoAlbums/photoAlbum11.jpeg";
+import photoAlbums12 from "../assets/images/photoAlbums/photoAlbum12.jpeg";
+import photoAlbums13 from "../assets/images/photoAlbums/photoAlbum13.jpeg";
+import photoAlbums14 from "../assets/images/photoAlbums/photoAlbum14.jpeg";
+import photoAlbums15 from "../assets/images/photoAlbums/photoAlbum15.jpeg";
+import photoAlbums16 from "../assets/images/photoAlbums/photoAlbum16.jpeg";
+import photoAlbums17 from "../assets/images/photoAlbums/photoAlbum17.jpeg";
+import photoAlbums18 from "../assets/images/photoAlbums/photoAlbum18.jpeg";
 
 export const portfolioImgs = [
   { img: card_1 },
@@ -200,69 +193,6 @@ export const footerLinks = [
   {
     name: "Contact Us",
     link: "/contact-us",
-  },
-];
-
-// export const slides = [
-//   {
-//     id: 1,
-//     image: banner_img1,
-//     title: "Make Portfolio With Kimono Studio",
-//     desc: "We are dedicated to immortalizing the enchanting moments of your special day. With a blend of classic elegance and modern flair.",
-//   },
-//   {
-//     id: 2,
-//     image: banner_img2,
-//     title: "Your Dream Wedding Agency",
-//     desc: "I have been building blogs and websites since 2002. In that time I have launched several of my own blogs, and helped hundreds of others do the same.",
-//   },
-//   {
-//     id: 3,
-//     image: banner_img3,
-//     title: "Creating Beautiful Memories",
-//     desc: "I know that starting a blog can seem overwhelming and intimidating. This free guide is all about blogging for beginners, and will teach you how to become a blogger.",
-//   },
-// ];
-
-export const review_card = [
-  {
-    id: 1,
-    img: review_img,
-  },
-
-  {
-    id: 2,
-    img: review_img,
-  },
-
-  {
-    id: 3,
-    img: review_img,
-  },
-
-  {
-    id: 4,
-    img: review_img,
-  },
-
-  {
-    id: 5,
-    img: review_img,
-  },
-
-  {
-    id: 6,
-    img: review_img,
-  },
-
-  {
-    id: 7,
-    img: review_img,
-  },
-
-  {
-    id: 8,
-    img: review_img,
   },
 ];
 
@@ -664,11 +594,27 @@ export const teamImgs = [
 ];
 
 export const photoAlbums = [
-  { image: photoAlbums1 },
-  { image: photoAlbums2 },
-  { image: photoAlbums3 },
-  { image: photoAlbums4 },
-  { image: photoAlbums5 },
-  { image: photoAlbums6 },
-  { image: photoAlbums7 },
+  { image: photoAlbums8 },
+  { image: photoAlbums9 },
+  { image: photoAlbums10 },
+  { image: photoAlbums11 },
+  { image: photoAlbums12 },
+  { image: photoAlbums13 },
+  { image: photoAlbums14 },
+  { image: photoAlbums15 },
+  { image: photoAlbums16 },
+  { image: photoAlbums17 },
+  { image: photoAlbums18 },
+];
+
+export const servicesImgs = [
+  {
+    img: banner1,
+  },
+  {
+    img: banner2,
+  },
+  {
+    img: banner3,
+  },
 ];

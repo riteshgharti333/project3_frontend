@@ -19,7 +19,7 @@
       text-transform: uppercase;
 
       @include sm {
-        font-size: 40px;
+        font-size: 35px;
       }
     }
 
@@ -382,6 +382,10 @@
       gap: 20px;
       h2 {
         font-size: 40px;
+
+        @include sm{
+          font-size: 30px;
+        }
       }
 
       .about-desc1 {

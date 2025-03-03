@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
 import "./HomeBanner.scss";
+
+import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Pagination, Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -7,8 +8,6 @@ import "swiper/css/effect-fade";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { bigBanner, smBanner } from "../../assets/data";
-
-import homeBanner from "../../assets/images/banner2.jpg"
 
 
 const HomeBanner = () => {
@@ -52,8 +51,8 @@ const HomeBanner = () => {
         }}
         className="swiper-container"
       >
-        {banners.map((slide) => (
-          <SwiperSlide key={slide.id} className="slide">
+        {banners.map((slide , index) => (
+          <SwiperSlide key={index} className="slide">
             <div className="homeBanner-imgs">
               <img src={slide.image} alt="Banner" />
             </div>

@@ -1,4 +1,5 @@
 import "./About.scss";
+
 import { FaPlus, FaMinus } from "react-icons/fa6";
 
 import { useState, useEffect, useRef } from "react";
@@ -19,12 +20,10 @@ import "aos/dist/aos.css";
 
 import overlay3 from "../../assets/images/overlay3.png";
 
-import { TbPlayerPlayFilled } from "react-icons/tb";
-
 import about1 from "../../assets/images/bannerimg/about-banner1.webp";
 import { aboutLists } from "../../assets/data";
 
-import founder_img from "../../assets/images/founder.jpeg";
+import founder_img from "../../assets/images/teamImgs/founder.jpeg";
 import Video from "../../components/Video/Video";
 
 const About = () => {

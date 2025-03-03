@@ -8,12 +8,15 @@ import ServiceContact from "../../../components/ServiceContact/ServiceContact";
 import {
   service1Data,
   service1Steps,
-  service2Data,
-  service2Steps,
 } from "../../../assets/servicesData";
 
-import s2 from "../../../assets/images/serviceimgs/s2.jpeg";
 import { useRef } from "react";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectFade, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/effect-fade";
+import { servicesImgs } from "../../../assets/data";
 
 const Service2 = () => {
   const contentRef = useRef(null);
@@ -41,24 +44,34 @@ const Service2 = () => {
 
         <div className="service2-container-content" ref={contentRef}>
           <div className="service2-container-content-top">
-            <img src={s2} alt="" />
+          <div className="services-img-slide">
+              <Swiper
+                modules={[EffectFade, Autoplay]}
+                effect="fade"
+                loop={true}
+                speed={1200}
+                autoplay={{ delay: 3000, disableOnInteraction: false }}
+                pagination={{ clickable: true }}
+                className="services-slide"
+              >
+                {servicesImgs.map((item, index) => (
+                  <SwiperSlide key={index} className="service_slide">
+                    <img src={item.img} alt="services" />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
             <h1>Wedding Cinematography by TK Production Film</h1>
             <p>
-              A pre-wedding shoot is the perfect way to celebrate your love
-              story before the big day. At TK Production Film, we specialize in
-              capturing the chemistry, emotions, and unique connection between
-              couples through breathtaking pre-wedding photography and films.
-              Whether in iconic cityscapes, lush landscapes, or dreamy
-              international locations like Lisbon, Portugal, our expert team
-              ensures your love story is beautifully told.
+            At TK Production Film, we bring your love story to life through stunning wedding photography and cinematography. Led by Taufeq Khan, with over 16 years of experience and 700+ weddings captured, we specialize in creating timeless memories that reflect the beauty, emotions, and joy of your special day.
             </p>
           </div>
 
           <div className="service2-services">
-            <h1>Our Pre-Wedding Services</h1>
+            <h1>Our Services</h1>
 
             <ul>
-              {service2Data.map((item) => (
+              {service1Data.map((item) => (
                 <li key={item.title}>
                   <FaCheck className="check-icon" />
                   <div className="services-desc">
@@ -74,7 +87,7 @@ const Service2 = () => {
             <h1>Our Service Steps</h1>
 
             <ul>
-              {service2Steps.map((item) => (
+              {service1Steps.map((item) => (
                 <li key={item.no}>
                   <p>{item.no}</p>
                   <p>
@@ -85,9 +98,7 @@ const Service2 = () => {
             </ul>
 
             <p>
-              With creativity, passion, and technical expertise, TK Production
-              Film makes your pre-wedding moments truly magical. Let us turn
-              your love story into a cinematic masterpiece!
+            With a commitment to excellence and attention to detail, TK Production Film creates unforgettable wedding memories worldwide. Let us capture your love story beautifully!
             </p>
           </div>
         </div>

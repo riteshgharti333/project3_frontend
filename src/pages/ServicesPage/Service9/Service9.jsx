@@ -4,21 +4,24 @@ import ServicePageSidebar from "../ServicePageSidebar/ServicePageSidebar";
 
 import { FaCheck } from "react-icons/fa";
 import ServiceContact from "../../../components/ServiceContact/ServiceContact";
-import { service1Data, service7Data, service7Steps } from "../../../assets/servicesData";
+import { service7Data, service7Steps } from "../../../assets/servicesData";
 
-import s1 from "../../../assets/images/serviceimgs/s1.jpeg";
 import { useRef } from "react";
 
-const Service9 = () => {
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectFade, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/effect-fade";
+import { servicesImgs } from "../../../assets/data";
 
-   const contentRef = useRef(null);
-  
-    const scrollToContent = () => {
-      if (contentRef.current) {
-        contentRef.current.scrollIntoView({ behavior: "smooth" });
-      }
-    };
-  
+const Service9 = () => {
+  const contentRef = useRef(null);
+
+  const scrollToContent = () => {
+    if (contentRef.current) {
+      contentRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <div className="service9">
@@ -32,16 +35,32 @@ const Service9 = () => {
 
       <div className="service9-container">
         <div className="service9-container-sidebar">
-          <ServicePageSidebar onSidebarClick={scrollToContent}/>
+          <ServicePageSidebar onSidebarClick={scrollToContent} />
         </div>
 
         <div className="service9-container-content" ref={contentRef}>
           <div className="service9-container-content-top">
-            <img src={s1} alt="" />
+            <div className="services-img-slide">
+              <Swiper
+                modules={[EffectFade, Autoplay]}
+                effect="fade"
+                loop={true}
+                speed={1200}
+                autoplay={{ delay: 3000, disableOnInteraction: false }}
+                pagination={{ clickable: true }}
+                className="services-slide"
+              >
+                {servicesImgs.map((item, index) => (
+                  <SwiperSlide key={index} className="service_slide">
+                    <img src={item.img} alt="services" />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
             <h1>Graduation Photography by TK Production Film</h1>
             <p>
               Graduation is a milestone achievement, marking years of dedication
-              and hard work. At TK Production Films, we specialize in capturing
+              and hard work. At TK Production Film, we specialize in capturing
               this proud moment with stunning photography and cinematic visuals.
               Whether it's an individual session, a group celebration, or a full
               graduation event, we ensure that your success story is beautifully
@@ -50,7 +69,7 @@ const Service9 = () => {
           </div>
 
           <div className="service9-services">
-            <h1>Our Services</h1>
+            <h1>Our Graduation Photography Services</h1>
 
             <ul>
               {service7Data.map((item) => (

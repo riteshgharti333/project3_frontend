@@ -6,8 +6,15 @@ import { FaCheck } from "react-icons/fa";
 import ServiceContact from "../../../components/ServiceContact/ServiceContact";
 import { service4Data, service4Steps } from "../../../assets/servicesData";
 
-import s1 from "../../../assets/images/serviceimgs/s1.jpeg";
+
 import { useRef } from "react";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectFade, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/effect-fade";
+import { servicesImgs } from "../../../assets/data";
+
 
 const Service8 = () => {
   const contentRef = useRef(null);
@@ -35,7 +42,23 @@ const Service8 = () => {
 
         <div className="service8-container-content" ref={contentRef}>
           <div className="service8-container-content-top">
-            <img src={s1} alt="" />
+          <div className="services-img-slide">
+              <Swiper
+                modules={[EffectFade, Autoplay]}
+                effect="fade"
+                loop={true}
+                speed={1200}
+                autoplay={{ delay: 3000, disableOnInteraction: false }}
+                pagination={{ clickable: true }}
+                className="services-slide"
+              >
+                {servicesImgs.map((item, index) => (
+                  <SwiperSlide key={index} className="service_slide">
+                    <img src={item.img} alt="services" />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
             <h1>Baby Shower Photography by TK Production Film</h1>
             <p>
               A baby shower is a beautiful celebration of love, joy, and new

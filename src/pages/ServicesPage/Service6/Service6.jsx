@@ -2,12 +2,16 @@ import "./Service6.scss";
 
 import ServicePageSidebar from "../ServicePageSidebar/ServicePageSidebar";
 
-import details from "../../../assets/images/details.jpg";
-
 import { FaCheck } from "react-icons/fa";
 import ServiceContact from "../../../components/ServiceContact/ServiceContact";
 import { service6Data, service6Steps } from "../../../assets/servicesData";
 import { useRef } from "react";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectFade, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/effect-fade";
+import { servicesImgs } from "../../../assets/data";
 
 const Service6 = () => {
 
@@ -36,13 +40,29 @@ const Service6 = () => {
 
         <div className="service6-container-content" ref={contentRef}>
           <div className="service6-container-content-top">
-            <img src={details} alt="" />
+          <div className="services-img-slide">
+              <Swiper
+                modules={[EffectFade, Autoplay]}
+                effect="fade"
+                loop={true}
+                speed={1200}
+                autoplay={{ delay: 3000, disableOnInteraction: false }}
+                pagination={{ clickable: true }}
+                className="services-slide"
+              >
+                {servicesImgs.map((item, index) => (
+                  <SwiperSlide key={index} className="service_slide">
+                    <img src={item.img} alt="services" />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
             <h1>
-              Engagement Photography & Couple Portraits by TK Production Films
+              Engagement Photography & Couple Portraits by TK Production Film
             </h1>
             <p>
               Your engagement marks the beginning of a beautiful journey, and at
-              TK Production Films, we capture this special moment with
+              TK Production Film, we capture this special moment with
               creativity and elegance. Whether it’s an intimate proposal, a
               grand engagement celebration, or a romantic couple shoot, our
               expert photography ensures your love story is beautifully
@@ -51,7 +71,7 @@ const Service6 = () => {
           </div>
 
           <div className="service6-services">
-            <h1>Our Services</h1>
+            <h1>Our Engagement Photography & Couple Portrait Services</h1>
 
             <ul>
               {service6Data.map((item) => (
@@ -81,7 +101,7 @@ const Service6 = () => {
             </ul>
 
             <p>
-              At TK Production Films, we turn your engagement into timeless
+              At TK Production Film, we turn your engagement into timeless
               memories. Let us capture the love, excitement, and beauty of your
               journey together!
             </p>

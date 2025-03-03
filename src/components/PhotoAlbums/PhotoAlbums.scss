@@ -12,7 +12,7 @@
     text-transform: uppercase;
 
     @include sm {
-      font-size: 40px;
+      font-size: 35px;
       text-align: center;
     }
   }
@@ -55,16 +55,22 @@
 
         img {
           width: 100%;
+          max-width: 100%;
           height: 500px;
           display: block;
-          object-fit: cover;
+          object-fit: contain;
+
+          @include lg {
+            height: auto;
+          }
 
           @include md {
-            height: 300px;
+            object-fit: contain;
           }
 
           @include sm {
             height: 300px;
+            object-fit: contain;
           }
         }
 
@@ -111,43 +117,43 @@
   }
 }
 
-/* Active slide's content description */
-.photoAlbums .swiper-slide-active .photoAlbums-card-content-desc {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-}
+// /* Active slide's content description */
+// .photoAlbums .swiper-slide-active .photoAlbums-card-content-desc {
+//   opacity: 1 !important;
+//   transform: translateY(0) !important;
+// }
 
-/* Swiper slide transformations */
-.photoAlbums .swiper-slide {
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-  transform: scale(0.85);
-}
+// /* Swiper slide transformations */
+// .photoAlbums .swiper-slide {
+//   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+//   transform: scale(0.85);
+// }
 
-.photoAlbums .swiper-slide-active {
-  transform: scale(1);
-  z-index: 10;
-  position: relative;
-}
+// .photoAlbums .swiper-slide-active {
+//   transform: scale(1);
+//   z-index: 10;
+//   position: relative;
+// }
 
-/* Adjust prev/next slide transformations */
-.photoAlbums .swiper-slide-next,
-.photoAlbums .swiper-slide-prev {
-  transform: scale(0.85) !important;
-}
+// /* Adjust prev/next slide transformations */
+// .photoAlbums .swiper-slide-next,
+// .photoAlbums .swiper-slide-prev {
+//   transform: scale(0.85) !important;
+// }
 
 /* Adjust slide container to allow shadow to overflow */
-.photoAlbums-cards {
-  position: relative;
-  max-width: 100%;
-  overflow: visible !important;
-}
+// .photoAlbums-cards {
+//   position: relative;
+//   max-width: 100%;
+//   overflow: visible !important;
+// }
 
-/* Image styling */
-.photoAlbums-card-content img {
-  width: 100%;
-  height: auto;
-  transition: transform 0.3s ease;
-}
+// /* Image styling */
+// .photoAlbums-card-content img {
+//   width: 100%;
+//   height: auto;
+//   transition: transform 0.3s ease;
+// }
 
 /* Navigation buttons */
 .swiper-button-prev,

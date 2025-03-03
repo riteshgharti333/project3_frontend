@@ -2,16 +2,19 @@ import "./Service1.scss";
 
 import ServicePageSidebar from "../ServicePageSidebar/ServicePageSidebar";
 
-
 import { FaCheck } from "react-icons/fa";
 import ServiceContact from "../../../components/ServiceContact/ServiceContact";
 import { service1Data, service1Steps } from "../../../assets/servicesData";
 
-import s1 from "../../../assets/images/serviceimgs/s1.jpeg";
 import { useRef } from "react";
 
-const Service1 = () => {
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectFade, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/effect-fade";
+import { servicesImgs } from "../../../assets/data";
 
+const Service1 = () => {
   const contentRef = useRef(null);
 
   const scrollToContent = () => {
@@ -32,12 +35,29 @@ const Service1 = () => {
 
       <div className="service1-container">
         <div className="service1-container-sidebar">
-          <ServicePageSidebar  onSidebarClick={scrollToContent}/>
+          <ServicePageSidebar onSidebarClick={scrollToContent} />
         </div>
 
         <div className="service1-container-content" ref={contentRef}>
           <div className="service1-container-content-top">
-            <img src={s1} alt="" />
+            <div className="services-img-slide">
+              <Swiper
+                modules={[EffectFade, Autoplay]}
+                effect="fade"
+                loop={true}
+                speed={1200}
+                autoplay={{ delay: 3000, disableOnInteraction: false }}
+                pagination={{ clickable: true }}
+                className="services-slide"
+              >
+                {servicesImgs.map((item, index) => (
+                  <SwiperSlide key={index} className="service_slide">
+                    <img src={item.img} alt="services" />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+
             <h1>Wedding Photography by TK Production Film</h1>
             <p>
               At TK Production Film, we bring your love story to life through

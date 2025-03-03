@@ -2,25 +2,25 @@ import "./Service4.scss";
 
 import ServicePageSidebar from "../ServicePageSidebar/ServicePageSidebar";
 
-import details from "../../../assets/images/details.jpg";
-
 import { FaCheck } from "react-icons/fa";
 import ServiceContact from "../../../components/ServiceContact/ServiceContact";
-import {
-  service4Data,
-  service4Steps,
-} from "../../../assets/servicesData";
+import { service2Data, service2Steps } from "../../../assets/servicesData";
 import { useRef } from "react";
 
-const Service4 = () => {
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectFade, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/effect-fade";
+import { servicesImgs } from "../../../assets/data";
 
-    const contentRef = useRef(null);
-  
-    const scrollToContent = () => {
-      if (contentRef.current) {
-        contentRef.current.scrollIntoView({ behavior: "smooth" });
-      }
-    };
+const Service4 = () => {
+  const contentRef = useRef(null);
+
+  const scrollToContent = () => {
+    if (contentRef.current) {
+      contentRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <div className="service4">
@@ -39,23 +39,40 @@ const Service4 = () => {
 
         <div className="service4-container-content" ref={contentRef}>
           <div className="service4-container-content-top">
-            <img src={details} alt="" />
+            <div className="services-img-slide">
+              <Swiper
+                modules={[EffectFade, Autoplay]}
+                effect="fade"
+                loop={true}
+                speed={1200}
+                autoplay={{ delay: 3000, disableOnInteraction: false }}
+                pagination={{ clickable: true }}
+                className="services-slide"
+              >
+                {servicesImgs.map((item, index) => (
+                  <SwiperSlide key={index} className="service_slide">
+                    <img src={item.img} alt="services" />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
             <h1>Pre-Wedding Photography by TK Production Film</h1>
             <p>
-              A baby shower is a beautiful celebration of love, joy, and new
-              beginnings. At TK Production Films, we specialize in capturing
-              these heartfelt moments with elegance and creativity. Whether it’s
-              an intimate gathering or a grand event, we ensure every special
-              detail, emotion, and laughter is beautifully preserved through our
-              expert photography and videography.
+              A pre-wedding shoot is the perfect way to celebrate your love
+              story before the big day. At TK Production Film, we specialize in
+              capturing the chemistry, emotions, and unique connection between
+              couples through breathtaking pre-wedding photography and film.
+              Whether in iconic cityscapes, lush landscapes, or dreamy
+              international locations like Lisbon, Portugal, our expert team
+              ensures your love story is beautifully told.
             </p>
           </div>
 
           <div className="service4-services">
-            <h1>Our Baby Shower Photography Services</h1>
+            <h1>Our Pre-Wedding Services</h1>
 
             <ul>
-              {service4Data.map((item) => (
+              {service2Data.map((item) => (
                 <li key={item.title}>
                   <FaCheck className="check-icon" />
                   <div className="services-desc">
@@ -71,7 +88,7 @@ const Service4 = () => {
             <h1>Our Service Steps</h1>
 
             <ul>
-              {service4Steps.map((item) => (
+              {service2Steps.map((item) => (
                 <li key={item.no}>
                   <p>{item.no}</p>
                   <p>
@@ -82,9 +99,9 @@ const Service4 = () => {
             </ul>
 
             <p>
-              At TK Production Films, we turn your baby shower into timeless
-              memories. Let us capture this joyous milestone with love and
-              perfection!
+              With creativity, passion, and technical expertise, TK Production
+              Film makes your pre-wedding moments truly magical. Let us turn
+              your love story into a cinematic masterpiece!
             </p>
           </div>
         </div>

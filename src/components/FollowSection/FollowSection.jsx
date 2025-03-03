@@ -1,7 +1,5 @@
 import "./FollowSection.scss";
 
-import m1 from "../../assets/images/insta.jpg";
-
 import { FaFacebook } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";

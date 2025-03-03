@@ -2,7 +2,6 @@ import "./Service3.scss";
 
 import ServicePageSidebar from "../ServicePageSidebar/ServicePageSidebar";
 
-import details from "../../../assets/images/details.jpg";
 
 import { FaCheck } from "react-icons/fa";
 import ServiceContact from "../../../components/ServiceContact/ServiceContact";
@@ -11,8 +10,13 @@ import {
   service2Steps,
 } from "../../../assets/servicesData";
 
-import s3 from "../../../assets/images/serviceimgs/s3.jpeg";
 import { useRef } from "react";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectFade, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/effect-fade";
+import { servicesImgs } from "../../../assets/data";
 
 const Service3 = () => {
 
@@ -41,13 +45,29 @@ const Service3 = () => {
         </div>
         <div className="service3-container-content" ref={contentRef}>
           <div className="service3-container-content-top">
-            <img src={s3} alt="" />
-            <h1>Pre Wedding Films by TK Production Film</h1>
+          <div className="services-img-slide">
+              <Swiper
+                modules={[EffectFade, Autoplay]}
+                effect="fade"
+                loop={true}
+                speed={1200}
+                autoplay={{ delay: 3000, disableOnInteraction: false }}
+                pagination={{ clickable: true }}
+                className="services-slide"
+              >
+                {servicesImgs.map((item, index) => (
+                  <SwiperSlide key={index} className="service_slide">
+                    <img src={item.img} alt="services" />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+            <h1>Pre Wedding Film by TK Production Film</h1>
             <p>
               A pre-wedding shoot is the perfect way to celebrate your love
               story before the big day. At TK Production Film, we specialize in
               capturing the chemistry, emotions, and unique connection between
-              couples through breathtaking pre-wedding photography and films.
+              couples through breathtaking pre-wedding photography and film.
               Whether in iconic cityscapes, lush landscapes, or dreamy
               international locations like Lisbon, Portugal, our expert team
               ensures your love story is beautifully told.
