@@ -1,4 +1,4 @@
-@import "../../styles/responsive.scss";
+@use "../../styles/responsive.scss" as *;
 
 .footer {
   background-image: url("../../assets/images/footer.png");

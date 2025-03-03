@@ -1,4 +1,4 @@
-@import "../../styles/responsive.scss";
+@use "../../styles/responsive.scss" as *;
 
 .aboutAgency {
   max-width: 1140px;
@@ -207,7 +207,6 @@
           display: none;
         }
 
-   
         @keyframes icon-bounce {
           70% {
             transform: translateY(0%);
@@ -383,7 +382,7 @@
       h2 {
         font-size: 40px;
 
-        @include sm{
+        @include sm {
           font-size: 30px;
         }
       }

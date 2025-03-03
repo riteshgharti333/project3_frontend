@@ -1,4 +1,5 @@
-// Mobile menu styles
+@use "../../styles/responsive.scss" as *;
+
 .mobile-burger-menu {
   @media (min-width: 1025px) {
     display: none;

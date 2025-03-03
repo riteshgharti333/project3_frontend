@@ -1,4 +1,4 @@
-@import "../../styles/responsive.scss";
+@use "../../styles/responsive.scss" as *;
 
 .serviceContact {
   padding: 0px 20px 60px 20px;
