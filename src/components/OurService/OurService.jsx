@@ -45,8 +45,8 @@ const OurService = () => {
 
       <div className="ourService-bottom">
         <div className="ourService-top-cards">
-          {services.map((item) => (
-            <Link to={item.link} key={item.no}>
+          {services.map((item , index) => (
+            <Link to={item.link} key={index}>
               <div className="ourService-top-card" data-aos="fade-right">
                 <img src={item.img} alt="" />
 

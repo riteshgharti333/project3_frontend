@@ -238,14 +238,14 @@ const About = () => {
         </div>
       </div>
 
-      <div class="about-content3">
-        <div class="scrolling-container">
-          <div class="scrolling-content">
+      <div className="about-content3">
+        <div className="scrolling-container">
+          <div className="scrolling-content">
             <h1>TK</h1>
             <h1>Production </h1>
             <h1>Film</h1>
           </div>
-          <div class="scrolling-content">
+          <div className="scrolling-content">
             <h1>TK</h1>
             <h1>Production </h1>
             <h1>Film</h1>

@@ -56,8 +56,8 @@ const OurPorfolio = () => {
       </div>
 
       <div className="ourPorfolio-cards">
-        {portfolioImgs.map((item) => (
-          <div className="ourPorfolio-card" key={item.img}>
+        {portfolioImgs.map((item , index) => (
+          <div className="ourPorfolio-card" key={index}>
             <div className="ourPorfolio-card-inner">
               <img src={item.img} alt="California Fall Collection 2023" />
             </div>

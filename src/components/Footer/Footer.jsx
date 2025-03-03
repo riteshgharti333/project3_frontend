@@ -20,8 +20,8 @@ const Footer = () => {
               <div className="row1">
                 <div className="footer-widget">
                   <ul>
-                    {footerLinks.map((item) => (
-                      <li key={item.link}>
+                    {footerLinks.map((item , index) => (
+                      <li key={index}>
                         <Link to={item.link}>{item.name}</Link>
                       </li>
                     ))}
@@ -55,8 +55,8 @@ const Footer = () => {
               <div className="row3">
                 <div className="footer-widget">
                   <ul>
-                    {services.map((item) => (
-                      <li key={item.no}>
+                    {services.map((item , index) => (
+                      <li key={index}>
                         <Link to={item.link}>{item.service_name}</Link>
                       </li>
                     ))}
