@@ -1,5 +1,4 @@
 import "./HomeBanner.scss";
-
 import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Pagination, Navigation, Autoplay } from "swiper/modules";
@@ -7,55 +6,46 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { bigBanner, smBanner } from "../../assets/data";
 import axios from "axios";
 import { baseUrl } from "../../main";
 
-
 const HomeBanner = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [initialized, setInitialized] = useState(false);
-
-  const [banners, setBanners] = useState(
-    window.matchMedia("(max-width: 480px)").matches ? smBanner : bigBanner
-  );
-
   const [allData, setAllData] = useState([]);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
 
+  // ✅ Fetch banners based on screen size
+  const fetchBanners = async () => {
+    try {
+      const apiUrl = isMobile
+        ? `${baseUrl}/mobile/all-mobile-banners`
+        : `${baseUrl}/home-banner/all-home-banners`;
+
+      const { data } = await axios.get(apiUrl);
+
+      if (data && data.homeBanner) {
+        setAllData(data.homeBanner);
+      }
+    } catch (error) {
+      console.error("Error fetching home banners:", error);
+    }
+  };
+
+  // ✅ Initial Fetch and Media Query Listener
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const { data } = await axios.get(`${baseUrl}/home-banner/all-home-banners`);
-        if (data && data.homeBanner) {
-          setAllData(data.homeBanner);
-        }
-      } catch (error) {
-        console.error("Error fetching home banners:", error);
+    fetchBanners();
+
+    const handleResize = () => {
+      const isMobileNow = window.innerWidth <= 480;
+
+      if (isMobileNow !== isMobile) {
+        setIsMobile(isMobileNow);
+        fetchBanners();
       }
     };
 
-    fetchData();
-  }, []);
-
-
-  useEffect(() => {
-    setInitialized(true);
-
-    // Media query listener
-    const mediaQuery = window.matchMedia("(max-width: 480px)");
-
-    const handleMediaChange = (e) => {
-      setBanners(e.matches ? smBanner : bigBanner);
-    };
-
-    // Attach listener
-    mediaQuery.addEventListener("change", handleMediaChange);
-
-    // Cleanup listener on unmount
-    return () => mediaQuery.removeEventListener("change", handleMediaChange);
-  }, []);
-
-  
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [isMobile]);
 
   return (
     <div className="homeBanner">
@@ -65,7 +55,6 @@ const HomeBanner = () => {
         loop={true}
         speed={1200}
         autoplay={{ delay: 3000, disableOnInteraction: false }}
-        onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
         pagination={{ clickable: true }}
         navigation={{
           nextEl: ".swiper-button-next",
@@ -73,13 +62,14 @@ const HomeBanner = () => {
         }}
         className="swiper-container"
       >
-        {allData.length  > 0 && allData.map((slide , index) => (
-          <SwiperSlide key={index} className="slide">
-            <div className="homeBanner-imgs">
-              <img src={slide.image} alt="Banner" />
-            </div>
-          </SwiperSlide>
-        ))}
+        {allData.length > 0 &&
+          allData.map((slide, index) => (
+            <SwiperSlide key={index} className="slide">
+              <div className="homeBanner-imgs">
+                <img src={slide.image} alt="Banner" loading="lazy" />
+              </div>
+            </SwiperSlide>
+          ))}
       </Swiper>
 
       <div className="swiper-button-prev">Prev</div>

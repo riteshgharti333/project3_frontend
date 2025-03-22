@@ -70,11 +70,11 @@ const Service4 = () => {
                 loop={true}
                 speed={1200}
                 autoplay={{ delay: 3000, disableOnInteraction: false }}
-                pagination={{ clickable: true }}
+            
                 className="services-slide"
               >
-                {serviceImages?.length > 0 &&
-                  serviceImages.map((item, index) => (
+                {
+                  serviceImages?.map((item, index) => (
                     <SwiperSlide key={index} className="service_slide">
                       <img src={item} loading="lazy" alt="services" />
                     </SwiperSlide>

@@ -72,7 +72,7 @@ const Service1 = () => {
                 pagination={{ clickable: true }}
                 className="services-slide"
               >
-                {serviceImages?.length > 0 && serviceImages.map((item, index) => (
+                {serviceImages?.map((item, index) => (
                   <SwiperSlide key={index} className="service_slide">
                     <img src={item} loading="lazy" alt="services" />
                   </SwiperSlide>

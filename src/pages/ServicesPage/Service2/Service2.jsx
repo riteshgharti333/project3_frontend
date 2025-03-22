@@ -16,6 +16,11 @@ import "swiper/css/effect-fade";
 import { servicesImgs } from "../../../assets/data";
 
 import Video from "../../../components/Video/Video";
+import { useEffect } from "react";
+import { baseUrl } from "../../../main";
+import axios from "axios";
+import { TbCodeAsterisk } from "react-icons/tb";
+import { useState } from "react";
 
 const Service2 = () => {
   const contentRef = useRef(null);
@@ -25,6 +30,27 @@ const Service2 = () => {
       contentRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  const [serviceImages, setServiceImages] = useState();
+
+  useEffect(() => {
+    const getServiceData = async () => {
+      try {
+        const { data } = await axios.get(
+          `${baseUrl}/services/wedding-cinematography/67de70bbaa6520fad7a06669`
+        );
+
+        if (data && data.serviceImages?.images) {
+          setServiceImages(data.serviceImages.images);
+        }
+      } catch (error) {
+        console.error("Error fetching service data:", error);
+        TbCodeAsterisk.error("Failed to fetch service data. Please try again.");
+      }
+    };
+
+    getServiceData();
+  }, []);
 
   return (
     <div className="service2">
@@ -50,14 +76,14 @@ const Service2 = () => {
                 loop={true}
                 speed={1200}
                 autoplay={{ delay: 3000, disableOnInteraction: false }}
-                pagination={{ clickable: true }}
                 className="services-slide"
               >
-                {servicesImgs.map((item, index) => (
-                  <SwiperSlide key={index} className="service_slide">
-                    <img src={item.img} alt="services" />
-                  </SwiperSlide>
-                ))}
+                {
+                  serviceImages?.map((item, index) => (
+                    <SwiperSlide key={index} className="service_slide">
+                      <img src={item} loading="lazy" alt="services" />
+                    </SwiperSlide>
+                  ))}
               </Swiper>
             </div>
             <h1>Wedding Cinematography by TK Production Film</h1>

@@ -2,13 +2,9 @@ import "./Service3.scss";
 
 import ServicePageSidebar from "../ServicePageSidebar/ServicePageSidebar";
 
-
 import { FaCheck } from "react-icons/fa";
 import ServiceContact from "../../../components/ServiceContact/ServiceContact";
-import {
-  service2Data,
-  service2Steps,
-} from "../../../assets/servicesData";
+import { service2Data, service2Steps } from "../../../assets/servicesData";
 
 import { useRef } from "react";
 
@@ -18,17 +14,40 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 import { servicesImgs } from "../../../assets/data";
 import Video from "../../../components/Video/Video";
+import { useEffect } from "react";
+import { useState } from "react";
+import axios from "axios";
+import { baseUrl } from "../../../main";
 
 const Service3 = () => {
+  const contentRef = useRef(null);
 
-  
-    const contentRef = useRef(null);
-  
-    const scrollToContent = () => {
-      if (contentRef.current) {
-        contentRef.current.scrollIntoView({ behavior: "smooth" });
+  const scrollToContent = () => {
+    if (contentRef.current) {
+      contentRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const [serviceImages, setServiceImages] = useState();
+
+  useEffect(() => {
+    const getServiceData = async () => {
+      try {
+        const { data } = await axios.get(
+          `${baseUrl}/services/pre-wedding-films/67de70dbaa6520fad7a0666b`
+        );
+
+        if (data && data.serviceImages?.images) {
+          setServiceImages(data.serviceImages.images);
+        }
+      } catch (error) {
+        console.error("Error fetching service data:", error);
+        TbCodeAsterisk.error("Failed to fetch service data. Please try again.");
       }
     };
+
+    getServiceData();
+  }, []);
 
   return (
     <div className="service3">
@@ -42,25 +61,26 @@ const Service3 = () => {
 
       <div className="service3-container">
         <div className="service3-container-sidebar">
-          <ServicePageSidebar  onSidebarClick={scrollToContent}/>
+          <ServicePageSidebar onSidebarClick={scrollToContent} />
         </div>
         <div className="service3-container-content" ref={contentRef}>
           <div className="service3-container-content-top">
-          <div className="services-img-slide">
+            <div className="services-img-slide">
               <Swiper
                 modules={[EffectFade, Autoplay]}
                 effect="fade"
                 loop={true}
                 speed={1200}
                 autoplay={{ delay: 3000, disableOnInteraction: false }}
-                pagination={{ clickable: true }}
+              
                 className="services-slide"
               >
-                {servicesImgs.map((item, index) => (
-                  <SwiperSlide key={index} className="service_slide">
-                    <img src={item.img} alt="services" />
-                  </SwiperSlide>
-                ))}
+                {
+                  serviceImages?.map((item, index) => (
+                    <SwiperSlide key={index} className="service_slide">
+                      <img src={item} loading="lazy" alt="services" />
+                    </SwiperSlide>
+                  ))}
               </Swiper>
             </div>
             <h1>Pre Wedding Film by TK Production Film</h1>
@@ -117,8 +137,6 @@ const Service3 = () => {
 
             <Video videoUrl="https://youtu.be/vlofWsDIDlo?si=CxQoUM-z8Hg70OXi" />
           </div>
-
-          
         </div>
       </div>
 

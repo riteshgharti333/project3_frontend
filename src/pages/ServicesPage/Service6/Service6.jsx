@@ -11,17 +11,40 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-fade";
-import { servicesImgs } from "../../../assets/data";
+import { useState } from "react";
+import { useEffect } from "react";
+import { baseUrl } from "../../../main";
+import axios from "axios";
 
 const Service6 = () => {
-
   const contentRef = useRef(null);
-  
-    const scrollToContent = () => {
-      if (contentRef.current) {
-        contentRef.current.scrollIntoView({ behavior: "smooth" });
+
+  const scrollToContent = () => {
+    if (contentRef.current) {
+      contentRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const [serviceImages, setServiceImages] = useState();
+
+  useEffect(() => {
+    const getServiceData = async () => {
+      try {
+        const { data } = await axios.get(
+          `${baseUrl}/services/engagement-photography-couple-portraits/67de7149aa6520fad7a06671`
+        );
+
+        if (data && data.serviceImages?.images) {
+          setServiceImages(data.serviceImages.images);
+        }
+      } catch (error) {
+        console.error("Error fetching service data:", error);
+        toast.error("Failed to fetch service data. Please try again.");
       }
     };
+
+    getServiceData();
+  }, []);
 
   return (
     <div className="service6">
@@ -35,12 +58,12 @@ const Service6 = () => {
 
       <div className="service6-container">
         <div className="service6-container-sidebar">
-          <ServicePageSidebar onSidebarClick={scrollToContent}/>
+          <ServicePageSidebar onSidebarClick={scrollToContent} />
         </div>
 
         <div className="service6-container-content" ref={contentRef}>
           <div className="service6-container-content-top">
-          <div className="services-img-slide">
+            <div className="services-img-slide">
               <Swiper
                 modules={[EffectFade, Autoplay]}
                 effect="fade"
@@ -50,11 +73,12 @@ const Service6 = () => {
                 pagination={{ clickable: true }}
                 className="services-slide"
               >
-                {servicesImgs.map((item, index) => (
-                  <SwiperSlide key={index} className="service_slide">
-                    <img src={item.img} alt="services" />
-                  </SwiperSlide>
-                ))}
+                {
+                  serviceImages?.map((item, index) => (
+                    <SwiperSlide key={index} className="service_slide">
+                      <img src={item} loading="lazy" alt="services" />
+                    </SwiperSlide>
+                  ))}
               </Swiper>
             </div>
             <h1>
@@ -62,11 +86,10 @@ const Service6 = () => {
             </h1>
             <p>
               Your engagement marks the beginning of a beautiful journey, and at
-              TK Production Film, we capture this special moment with
-              creativity and elegance. Whether it’s an intimate proposal, a
-              grand engagement celebration, or a romantic couple shoot, our
-              expert photography ensures your love story is beautifully
-              preserved.
+              TK Production Film, we capture this special moment with creativity
+              and elegance. Whether it’s an intimate proposal, a grand
+              engagement celebration, or a romantic couple shoot, our expert
+              photography ensures your love story is beautifully preserved.
             </p>
           </div>
 
