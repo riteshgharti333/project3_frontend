@@ -4,7 +4,7 @@
   .gallery-top-banner {
     padding: 100px 30px 0px 30px;
 
-    @include md{
+    @include md {
       padding: 100px 10px 0px 10px;
     }
 
@@ -16,7 +16,7 @@
       height: 500px;
       position: relative;
 
-      @include md{
+      @include md {
         height: 300px;
       }
 
@@ -46,12 +46,12 @@
             font-size: 40px;
           }
 
-          @include lg{
-            &::before{
+          @include lg {
+            &::before {
               display: none;
             }
 
-            &::after{
+            &::after {
               display: none;
             }
           }
@@ -142,42 +142,6 @@
         position: relative;
         overflow: hidden;
 
-        &::after {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: rgba(163, 151, 151, 0.5);
-          color: aqua;
-          display: block;
-          pointer-events: none;
-          z-index: 1;
-          transform: scale(0);
-          transition: transform 0.5s ease;
-        }
-
-        &.top-left::after {
-          transform-origin: top left;
-        }
-
-        &.bottom-left::after {
-          transform-origin: bottom left;
-        }
-
-        &.top-right::after {
-          transform-origin: top right;
-        }
-
-        &.bottom-right::after {
-          transform-origin: bottom right;
-        }
-
-        &:hover::after {
-          transform: scale(1);
-        }
-
         img {
           width: 100%;
           height: 100%;
@@ -195,15 +159,6 @@
           opacity: 0;
           transition: opacity 0.5s ease;
           width: 100%;
-
-          h2 {
-            font-size: 24px;
-            margin-bottom: 10px;
-          }
-
-          p {
-            font-size: 16px;
-          }
         }
 
         &:hover .card-content {
@@ -220,6 +175,7 @@
   margin-top: 20px;
   list-style: none;
   align-items: center;
+  margin-bottom: 20px;
   .page-item {
     margin: 0 5px;
     display: block;
@@ -252,10 +208,10 @@
   }
 
   .prev-icon,
-.next-icon {
-  padding: 1.5px 0;
-  pointer-events: none; // This prevents hover effects
-}
+  .next-icon {
+    padding: 1.5px 0;
+    pointer-events: none; // This prevents hover effects
+  }
 
   .page-link:hover {
     background-color: $primary-color;
@@ -280,5 +236,33 @@
 
   .page-item {
     list-style: none;
+  }
+}
+///////////////
+
+.image-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+
+  img {
+    max-width: 90%;
+    max-height: 90%;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 30px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
   }
 }

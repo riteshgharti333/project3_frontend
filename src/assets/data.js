@@ -618,3 +618,33 @@ export const servicesImgs = [
     img: banner3,
   },
 ];
+
+/// home portfolio
+
+import image1 from "../assets/images/homeportfolio/WhatsApp Image 2025-03-22 at 09.44.06 (1).jpeg";
+import image2 from "../assets/images/homeportfolio/WhatsApp Image 2025-03-22 at 09.44.06 (2).jpeg";
+import image3 from "../assets/images/homeportfolio/WhatsApp Image 2025-03-22 at 09.44.06.jpeg";
+import image4 from "../assets/images/homeportfolio/WhatsApp Image 2025-03-22 at 09.44.07 (1).jpeg";
+import image5 from "../assets/images/homeportfolio/WhatsApp Image 2025-03-22 at 09.44.07 (2).jpeg";
+import image6 from "../assets/images/homeportfolio/WhatsApp Image 2025-03-22 at 09.44.07.jpeg";
+
+export const homePortfolio = [
+  {
+    img: image5,
+  },
+  {
+    img: image6,
+  },
+  {
+    img: image1,
+  },
+  {
+    img: image2,
+  },
+  {
+    img: image3,
+  },
+  {
+    img: image4,
+  },
+];

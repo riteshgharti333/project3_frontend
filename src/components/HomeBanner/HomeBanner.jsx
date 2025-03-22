@@ -8,6 +8,8 @@ import "swiper/css/effect-fade";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { bigBanner, smBanner } from "../../assets/data";
+import axios from "axios";
+import { baseUrl } from "../../main";
 
 
 const HomeBanner = () => {
@@ -17,6 +19,24 @@ const HomeBanner = () => {
   const [banners, setBanners] = useState(
     window.matchMedia("(max-width: 480px)").matches ? smBanner : bigBanner
   );
+
+  const [allData, setAllData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { data } = await axios.get(`${baseUrl}/home-banner/all-home-banners`);
+        if (data && data.homeBanner) {
+          setAllData(data.homeBanner);
+        }
+      } catch (error) {
+        console.error("Error fetching home banners:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
 
   useEffect(() => {
     setInitialized(true);
@@ -35,6 +55,8 @@ const HomeBanner = () => {
     return () => mediaQuery.removeEventListener("change", handleMediaChange);
   }, []);
 
+  
+
   return (
     <div className="homeBanner">
       <Swiper
@@ -51,7 +73,7 @@ const HomeBanner = () => {
         }}
         className="swiper-container"
       >
-        {banners.map((slide , index) => (
+        {allData.length  > 0 && allData.map((slide , index) => (
           <SwiperSlide key={index} className="slide">
             <div className="homeBanner-imgs">
               <img src={slide.image} alt="Banner" />

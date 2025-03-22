@@ -1,15 +1,37 @@
 import "./PhotoAlbums.scss";
+
 import "aos/dist/aos.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import { photoAlbums } from "../../assets/data";
+
 import { useEffect, useState } from "react";
+import axios from "axios";
+import { baseUrl } from "../../main";
 
 const PhotoAlbums = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [initialized, setInitialized] = useState(false);
+
+  const [allData, setAllData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { data } = await axios.get(
+          `${baseUrl}/photoAlbum/all-photo-album`
+        );
+        if (data && data.photoAlbum) {
+          setAllData(data.photoAlbum);
+        }
+      } catch (error) {
+        console.error("Error fetching home banners:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   useEffect(() => {
     setInitialized(true);
@@ -52,24 +74,20 @@ const PhotoAlbums = () => {
             },
           }}
         >
-          {photoAlbums.map((album, index) => (
-            <SwiperSlide key={album.image} className="photoAlbums-card">
-              <div className="photoAlbums-card-content">
-                <img src={album.image} alt={album.image} />
+          {allData.length > 0 &&
+            allData.map((album, index) => (
+              <SwiperSlide key={album.image} className="photoAlbums-card">
+                <div className="photoAlbums-card-content">
+                  <img src={album.image} alt={album.image} />
 
-                <div
-                  className={`homeBanner-desc ${
-                    initialized && index === activeIndex ? "animate" : ""
-                  }`}
-                >
-                  {/* <div className="photoAlbums-card-content-desc">
-                    <h3>Birght Boho Sunshine</h3>
-                    <p>By Jonathan Wilson</p>
-                  </div> */}
+                  <div
+                    className={`homeBanner-desc ${
+                      initialized && index === activeIndex ? "animate" : ""
+                    }`}
+                  ></div>
                 </div>
-              </div>
-            </SwiperSlide>
-          ))}
+              </SwiperSlide>
+            ))}
         </Swiper>
       </div>
     </div>

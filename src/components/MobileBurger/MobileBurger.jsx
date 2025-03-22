@@ -23,7 +23,6 @@ const MobileBurger = () => {
 
   const [isServicesOpen, setIsServicesOpen] = useState(false);
 
-  
   const [scroll, setScroll] = useState(false);
 
   const toggleServices = () => {
@@ -31,29 +30,31 @@ const MobileBurger = () => {
   };
 
   const location = useLocation();
-  
+
   const homeClass = location.pathname === "/" ? "mobile-class" : "";
 
   useEffect(() => {
-      const handleScroll = () => {
-        if (window.scrollY > 0) {
-          setScroll(true);
-        } else {
-          setScroll(false);
-        }
-      };
-  
-      window.addEventListener("scroll", handleScroll);
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-      };
-    }, []);
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setScroll(true);
+      } else {
+        setScroll(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
-    <div className={`mobile-burger-menu ${scroll ? "scrolled" : ""} ${homeClass}` }>
+    <div
+      className={`mobile-burger-menu ${scroll ? "scrolled" : ""} ${homeClass}`}
+    >
       {/* Mobile Menu Button */}
       <button onClick={() => setIsOpen(true)} className="mobile-menu-btn">
-        <IoMdMenu size={35}  className="burger-line" />
+        <IoMdMenu size={35} className="burger-line" />
       </button>
 
       {/* Fullscreen Overlay */}

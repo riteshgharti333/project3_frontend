@@ -6,13 +6,14 @@ import { FaCheck } from "react-icons/fa";
 import ServiceContact from "../../../components/ServiceContact/ServiceContact";
 import { service1Data, service1Steps } from "../../../assets/servicesData";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-fade";
-import { servicesImgs } from "../../../assets/data";
+import axios from "axios";
+import { baseUrl } from "../../../main";
 
 const Service1 = () => {
   const contentRef = useRef(null);
@@ -22,6 +23,27 @@ const Service1 = () => {
       contentRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  const [serviceImages, setServiceImages] = useState();
+
+  useEffect(() => {
+    const getServiceData = async () => {
+      try {
+        const { data } = await axios.get(
+          `${baseUrl}/services/wedding-photography/67de708faa6520fad7a06667`
+        );
+
+        if (data && data.serviceImages?.images) {
+          setServiceImages(data.serviceImages.images);
+        }
+      } catch (error) {
+        console.error("Error fetching service data:", error);
+        toast.error("Failed to fetch service data. Please try again.");
+      }
+    };
+
+    getServiceData();
+  }, []);
 
   return (
     <div className="service1">
@@ -50,9 +72,9 @@ const Service1 = () => {
                 pagination={{ clickable: true }}
                 className="services-slide"
               >
-                {servicesImgs.map((item, index) => (
+                {serviceImages?.length > 0 && serviceImages.map((item, index) => (
                   <SwiperSlide key={index} className="service_slide">
-                    <img src={item.img} alt="services" />
+                    <img src={item} loading="lazy" alt="services" />
                   </SwiperSlide>
                 ))}
               </Swiper>

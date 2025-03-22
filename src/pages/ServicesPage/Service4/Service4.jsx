@@ -5,13 +5,16 @@ import ServicePageSidebar from "../ServicePageSidebar/ServicePageSidebar";
 import { FaCheck } from "react-icons/fa";
 import ServiceContact from "../../../components/ServiceContact/ServiceContact";
 import { service2Data, service2Steps } from "../../../assets/servicesData";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-fade";
 import { servicesImgs } from "../../../assets/data";
+import Video from "../../../components/Video/Video";
+import axios from "axios";
+import { baseUrl } from "../../../main";
 
 const Service4 = () => {
   const contentRef = useRef(null);
@@ -21,6 +24,27 @@ const Service4 = () => {
       contentRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  const [serviceImages, setServiceImages] = useState();
+
+  useEffect(() => {
+    const getServiceData = async () => {
+      try {
+        const { data } = await axios.get(
+          `${baseUrl}/services/pre-wedding-photography/67de710faa6520fad7a0666d`
+        );
+
+        if (data && data.serviceImages?.images) {
+          setServiceImages(data.serviceImages.images);
+        }
+      } catch (error) {
+        console.error("Error fetching service data:", error);
+        toast.error("Failed to fetch service data. Please try again.");
+      }
+    };
+
+    getServiceData();
+  }, []);
 
   return (
     <div className="service4">
@@ -49,11 +73,12 @@ const Service4 = () => {
                 pagination={{ clickable: true }}
                 className="services-slide"
               >
-                {servicesImgs.map((item, index) => (
-                  <SwiperSlide key={index} className="service_slide">
-                    <img src={item.img} alt="services" />
-                  </SwiperSlide>
-                ))}
+                {serviceImages?.length > 0 &&
+                  serviceImages.map((item, index) => (
+                    <SwiperSlide key={index} className="service_slide">
+                      <img src={item} loading="lazy" alt="services" />
+                    </SwiperSlide>
+                  ))}
               </Swiper>
             </div>
             <h1>Pre-Wedding Photography by TK Production Film</h1>
@@ -85,24 +110,9 @@ const Service4 = () => {
           </div>
 
           <div className="service4-steps">
-            <h1>Our Service Steps</h1>
+            <h1>Our Work</h1>
 
-            <ul>
-              {service2Steps.map((item) => (
-                <li key={item.no}>
-                  <p>{item.no}</p>
-                  <p>
-                    <span>{item.title} – </span> {item.desc}
-                  </p>
-                </li>
-              ))}
-            </ul>
-
-            <p>
-              With creativity, passion, and technical expertise, TK Production
-              Film makes your pre-wedding moments truly magical. Let us turn
-              your love story into a cinematic masterpiece!
-            </p>
+            <Video videoUrl="https://youtu.be/hAQ666Nzh0E?si=EgQSRNL0zfiEnr8a" />
           </div>
         </div>
       </div>

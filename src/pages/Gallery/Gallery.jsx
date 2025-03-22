@@ -1,37 +1,20 @@
 import "./Gallery.scss";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 import { gallery } from "../../assets/data";
+import axios from "axios";
+import { baseUrl } from "../../main";
 
 const Gallery = () => {
-  const [overlayDirection, setOverlayDirection] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
-  const cardsPerPage = 10;
+  const [allPortfolio, setAllPortfolio] = useState([]);
+  const cardsPerPage = 20;
+  const [selectedImg, setSelectedImg] = useState(null);
 
-  const handleMouseEnter = (e) => {
-    const { offsetWidth: width, offsetHeight: height } = e.currentTarget;
-    const { clientX: x, clientY: y } = e;
-
-    const fromLeft = x < width / 2;
-    const fromTop = y < height / 2;
-
-    if (fromLeft && fromTop) {
-      setOverlayDirection("top-left");
-    } else if (fromLeft && !fromTop) {
-      setOverlayDirection("bottom-left");
-    } else if (!fromLeft && fromTop) {
-      setOverlayDirection("top-right");
-    } else {
-      setOverlayDirection("bottom-right");
-    }
-  };
-
-  // Calculate the cards to display for the current page
   const offset = currentPage * cardsPerPage;
-  const currentCards = gallery.slice(offset, offset + cardsPerPage);
 
   // Handle page change with scroll to top
   const handlePageChange = ({ selected }) => {
@@ -39,9 +22,26 @@ const Gallery = () => {
     window.scrollTo(0, 0);
   };
 
+  useEffect(() => {
+    const getAllPortfolio = async () => {
+      try {
+        const { data } = await axios.get(`${baseUrl}/portfolio/all-portfolios`);
+        if (data && data.portfolios) {
+          setAllPortfolio(data.portfolios);
+        }
+      } catch (error) {
+        console.error("Error fetching portfolios:", error);
+        toast.error("Failed to fetch portfolios. Please try again.");
+      }
+    };
+
+    getAllPortfolio();
+  }, []);
+
+  const currentCards = allPortfolio.slice(offset, offset + cardsPerPage);
+
   return (
     <div className="gallery">
-      
       <div className="gallery-top-banner">
         <div className="gallery-banner">
           <div className="gallery-banner-desc">
@@ -56,18 +56,13 @@ const Gallery = () => {
         </div>
 
         <div className="gallery-cards">
-          {currentCards.map((card, index) => (
-            <div
-              key={index}
-              className={`gallery-card ${overlayDirection}`}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={() => setOverlayDirection("")}
-            >
-              <img src={card.img} alt="" />
-              <div className="card-content">
-                <h2>{card.title}</h2>
-                <p>{card.desc}</p>
-              </div>
+          {currentCards.map((item, index) => (
+            <div key={index} className="gallery-card">
+              <img
+                src={item.image}
+                alt=""
+                onClick={() => setSelectedImg(item.image)}
+              />
             </div>
           ))}
         </div>
@@ -99,6 +94,15 @@ const Gallery = () => {
           breakLabel=".........."
         />
       </div>
+
+      {selectedImg && (
+        <div className="image-modal" onClick={() => setSelectedImg(null)}>
+          <img src={selectedImg} alt="Fullscreen Preview" loading="lazy" />
+          <span className="close-btn" onClick={() => setSelectedImg(null)}>
+            ×
+          </span>
+        </div>
+      )}
     </div>
   );
 };

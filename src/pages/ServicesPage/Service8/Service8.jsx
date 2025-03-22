@@ -6,15 +6,14 @@ import { FaCheck } from "react-icons/fa";
 import ServiceContact from "../../../components/ServiceContact/ServiceContact";
 import { service4Data, service4Steps } from "../../../assets/servicesData";
 
-
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-fade";
-import { servicesImgs } from "../../../assets/data";
-
+import axios from "axios";
+import { baseUrl } from "../../../main";
 
 const Service8 = () => {
   const contentRef = useRef(null);
@@ -24,6 +23,27 @@ const Service8 = () => {
       contentRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  const [serviceImages, setServiceImages] = useState();
+
+  useEffect(() => {
+    const getServiceData = async () => {
+      try {
+        const { data } = await axios.get(
+          `${baseUrl}/services/baby-shower-photography/67de7198aa6520fad7a06675`
+        );
+
+        if (data && data.serviceImages?.images) {
+          setServiceImages(data.serviceImages.images);
+        }
+      } catch (error) {
+        console.error("Error fetching service data:", error);
+        toast.error("Failed to fetch service data. Please try again.");
+      }
+    };
+
+    getServiceData();
+  }, []);
 
   return (
     <div className="service8">
@@ -42,7 +62,7 @@ const Service8 = () => {
 
         <div className="service8-container-content" ref={contentRef}>
           <div className="service8-container-content-top">
-          <div className="services-img-slide">
+            <div className="services-img-slide">
               <Swiper
                 modules={[EffectFade, Autoplay]}
                 effect="fade"
@@ -52,11 +72,12 @@ const Service8 = () => {
                 pagination={{ clickable: true }}
                 className="services-slide"
               >
-                {servicesImgs.map((item, index) => (
-                  <SwiperSlide key={index} className="service_slide">
-                    <img src={item.img} alt="services" />
-                  </SwiperSlide>
-                ))}
+                {serviceImages?.length > 0 &&
+                  serviceImages.map((item, index) => (
+                    <SwiperSlide key={index} className="service_slide">
+                      <img src={item} loading="lazy" alt="services" />
+                    </SwiperSlide>
+                  ))}
               </Swiper>
             </div>
             <h1>Baby Shower Photography by TK Production Film</h1>

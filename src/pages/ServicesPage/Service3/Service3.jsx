@@ -17,6 +17,7 @@ import { EffectFade, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-fade";
 import { servicesImgs } from "../../../assets/data";
+import Video from "../../../components/Video/Video";
 
 const Service3 = () => {
 
@@ -110,6 +111,14 @@ const Service3 = () => {
               your love story into a cinematic masterpiece!
             </p>
           </div>
+
+          <div className="service3-steps">
+            <h1>Our Work</h1>
+
+            <Video videoUrl="https://youtu.be/vlofWsDIDlo?si=CxQoUM-z8Hg70OXi" />
+          </div>
+
+          
         </div>
       </div>
 

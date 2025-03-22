@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import "./OurPorfolio.scss";
-import { portfolioImgs } from "../../assets/data";
+import { homePortfolio } from "../../assets/data";
 import { Link } from "react-router-dom";
 
 const OurPorfolio = () => {
@@ -56,7 +56,7 @@ const OurPorfolio = () => {
       </div>
 
       <div className="ourPorfolio-cards">
-        {portfolioImgs.map((item , index) => (
+        {homePortfolio.map((item , index) => (
           <div className="ourPorfolio-card" key={index}>
             <div className="ourPorfolio-card-inner">
               <img src={item.img} alt="California Fall Collection 2023" />
