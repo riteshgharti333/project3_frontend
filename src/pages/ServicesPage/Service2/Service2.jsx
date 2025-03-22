@@ -14,6 +14,7 @@ import { EffectFade, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-fade";
 import { servicesImgs } from "../../../assets/data";
+
 import Video from "../../../components/Video/Video";
 
 const Service2 = () => {
