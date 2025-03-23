@@ -13,10 +13,13 @@ import "swiper/css/navigation";
 
 import bg2 from "../../assets/images/bg2.jpg";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
+import { baseUrl } from "../../../../admin/src/main";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 const ClientReview = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [expandedReview, setExpandedReview] = useState(null); 
+  const [expandedReview, setExpandedReview] = useState(null);
   const modalRef = useRef(null); // Reference for modal
 
   // Close modal on outside click
@@ -35,6 +38,24 @@ const ClientReview = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [expandedReview]);
+
+  const [allData, setAllData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { data } = await axios.get(`${baseUrl}/review/all-reviews`);
+        if (data && data.reviews) {
+          setAllData(data.reviews);
+        }
+      } catch (error) {
+        console.error("Error fetching reviews:", error);
+        toast.error("Failed to fetch reviews");
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div className="clientReview">
@@ -58,7 +79,7 @@ const ClientReview = () => {
             }}
             onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
           >
-            {client_reviews.map((review, index) => (
+            {allData?.map((review, index) => (
               <SwiperSlide key={index}>
                 <ReviewCard
                   review={review}
@@ -82,8 +103,13 @@ const ClientReview = () => {
       {expandedReview && (
         <div className="clientReview-overlay">
           <div className="clientReview-modal" ref={modalRef}>
-            <button className="close-btn" onClick={() => setExpandedReview(null)}>✖</button>
-            <p>" {expandedReview.review_title} "</p>
+            <button
+              className="close-btn"
+              onClick={() => setExpandedReview(null)}
+            >
+              ✖
+            </button>
+            <p>" {expandedReview.review} "</p>
           </div>
         </div>
       )}
@@ -99,7 +125,7 @@ const ReviewCard = ({ review, isActive, onExpand }) => {
     const element = textRef.current;
     if (element) {
       const lineHeight = parseFloat(getComputedStyle(element).lineHeight);
-      const maxHeight = lineHeight * 3; 
+      const maxHeight = lineHeight * 3;
       setIsTruncated(element.scrollHeight > maxHeight);
     }
   }, [review]);
@@ -119,7 +145,7 @@ const ReviewCard = ({ review, isActive, onExpand }) => {
       </div>
 
       <p ref={textRef} className="reviews">
-        " {review.review_title} "
+        " {review.review} "
       </p>
 
       {isTruncated && (
@@ -131,9 +157,9 @@ const ReviewCard = ({ review, isActive, onExpand }) => {
       <hr className="line" />
 
       <div className="review-name">
-        <img src={review.img} alt={review.review_name} />
+        <img src={review.image} alt={review.name} />
         <div className="review-name-desc">
-          <p>{review.review_name}</p>
+          <p>{review.name}</p>
         </div>
       </div>
     </div>

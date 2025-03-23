@@ -49,6 +49,25 @@ const Service2 = () => {
     getServiceData();
   }, []);
 
+  const [allData, setAllData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { data } = await axios.get(
+          `${baseUrl}/wedding-cinematography/all-videos`
+        );
+        if (data && data.videos) {
+          setAllData(data.videos);
+        }
+      } catch (error) {
+        console.error("Error fetching videos:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className="service2">
       <div className="service2-top-banner">
@@ -121,8 +140,10 @@ const Service2 = () => {
 
           <div className="service2-steps">
             <h1>Our Work</h1>
-
-            <Video videoUrl="https://youtu.be/hAQ666Nzh0E?si=EgQSRNL0zfiEnr8a" />
+            {allData.length > 0 &&
+              allData.map((item, index) => (
+                <Video videoUrl={item.link} key={index} />
+              ))}
           </div>
         </div>
       </div>

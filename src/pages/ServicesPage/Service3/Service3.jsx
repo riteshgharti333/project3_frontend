@@ -35,7 +35,7 @@ const Service3 = () => {
     const getServiceData = async () => {
       try {
         const { data } = await axios.get(
-          `${baseUrl}/services/pre-wedding-films/67de70dbaa6520fad7a0666b`
+          `${baseUrl}/services/pre-wedding-film/67dfca9663d5ed464d57f729`
         );
 
         if (data && data.serviceImages?.images) {
@@ -48,6 +48,25 @@ const Service3 = () => {
     };
 
     getServiceData();
+  }, []);
+
+  const [allData, setAllData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { data } = await axios.get(
+          `${baseUrl}/pre-wedding-film/all-videos`
+        );
+        if (data && data.videos) {
+          setAllData(data.videos);
+        }
+      } catch (error) {
+        console.error("Error fetching videos:", error);
+      }
+    };
+
+    fetchData();
   }, []);
 
   return (
@@ -127,7 +146,10 @@ const Service3 = () => {
           <div className="service3-steps">
             <h1>Our Work</h1>
 
-            <Video videoUrl="https://youtu.be/vlofWsDIDlo?si=CxQoUM-z8Hg70OXi" />
+            {allData.length > 0 &&
+              allData.map((item, index) => (
+                <Video videoUrl={item.link} key={index} />
+              ))}
           </div>
         </div>
       </div>

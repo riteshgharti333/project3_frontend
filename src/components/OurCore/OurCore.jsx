@@ -20,7 +20,6 @@ const OurCore = () => {
       try {
         const { data } = await axios.get(`${baseUrl}/team/all-teams`);
         setTeam(data?.teams);
-        console.log(data)
       } catch (error) {
         console.error("Error fetching teams:", error);
       }
