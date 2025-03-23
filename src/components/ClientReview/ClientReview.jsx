@@ -3,7 +3,6 @@ import "./ClientReview.scss";
 
 import { FaStar } from "react-icons/fa";
 import { RiDoubleQuotesR } from "react-icons/ri";
-import { client_reviews } from "../../assets/data";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
