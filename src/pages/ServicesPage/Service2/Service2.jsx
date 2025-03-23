@@ -1,11 +1,8 @@
 import "./Service2.scss";
 import ServicePageSidebar from "../ServicePageSidebar/ServicePageSidebar";
 
-import details from "../../../assets/images/details.jpg";
-
-import { FaCheck } from "react-icons/fa";
 import ServiceContact from "../../../components/ServiceContact/ServiceContact";
-import { service1Data, service1Steps } from "../../../assets/servicesData";
+import { service1Steps } from "../../../assets/servicesData";
 
 import { useRef } from "react";
 
@@ -13,7 +10,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-fade";
-import { servicesImgs } from "../../../assets/data";
 
 import Video from "../../../components/Video/Video";
 import { useEffect } from "react";
@@ -21,6 +17,7 @@ import { baseUrl } from "../../../main";
 import axios from "axios";
 import { TbCodeAsterisk } from "react-icons/tb";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const Service2 = () => {
   const contentRef = useRef(null);
@@ -45,7 +42,7 @@ const Service2 = () => {
         }
       } catch (error) {
         console.error("Error fetching service data:", error);
-        TbCodeAsterisk.error("Failed to fetch service data. Please try again.");
+        toast.error("Failed to fetch service data. Please try again.");
       }
     };
 
@@ -78,59 +75,48 @@ const Service2 = () => {
                 autoplay={{ delay: 3000, disableOnInteraction: false }}
                 className="services-slide"
               >
-                {
-                  serviceImages?.map((item, index) => (
-                    <SwiperSlide key={index} className="service_slide">
-                      <img src={item} loading="lazy" alt="services" />
-                    </SwiperSlide>
-                  ))}
+                {serviceImages?.map((item, index) => (
+                  <SwiperSlide key={index} className="service_slide">
+                    <img src={item} loading="lazy" alt="services" />
+                  </SwiperSlide>
+                ))}
               </Swiper>
             </div>
             <h1>Wedding Cinematography by TK Production Film</h1>
             <p>
-              At TK Production Film, we bring your love story to life through
-              stunning wedding photography and cinematography. Led by Taufeq
-              Khan, with over 16 years of experience and 700+ weddings captured,
-              we specialize in creating timeless memories that reflect the
-              beauty, emotions, and joy of your special day.
+              Capture your love story with TK Production Film. Led by Taufeq
+              Khan with 16+ years and 800+ weddings, we create timeless memories
+              through stunning photography and cinematic films.
+            </p>
+            <p>
+              We specialize in turning your wedding day into a visual
+              masterpiece. From the soft glances during the vows to the joyous
+              laughter at the reception, our team captures every moment with
+              artistry and precision. Whether you love candid shots that reveal
+              raw emotions, traditional portraits that honor timeless elegance,
+              or editorial-style images with a modern flair, we tailor our
+              approach to your unique style. Using top-tier equipment and
+              creative techniques, we ensure every detail—your dress, the
+              flowers, the smiles—shines through in vibrant, high-quality photos
+              you’ll cherish forever.
             </p>
           </div>
 
-          <div className="service2-services">
-            <h1>Our Services</h1>
-
-            <ul>
-              {service1Data.map((item) => (
-                <li key={item.title}>
-                  <FaCheck className="check-icon" />
-                  <div className="services-desc">
-                    <p>{item.title} :&nbsp;</p>
-                    <p>{item.desc}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-
           <div className="service2-steps">
-            <h1>Our Service Steps</h1>
+            <h1>How It Works?</h1>
 
             <ul>
               {service1Steps.map((item) => (
                 <li key={item.no}>
                   <p>{item.no}</p>
                   <p>
-                    <span>{item.title} – </span> {item.desc}
+                    <span>{item.title}</span> {item.desc}
                   </p>
                 </li>
               ))}
             </ul>
 
-            <p>
-              With a commitment to excellence and attention to detail, TK
-              Production Film creates unforgettable wedding memories worldwide.
-              Let us capture your love story beautifully!
-            </p>
+            <p>Let us make your special day unforgettable!</p>
           </div>
 
           <div className="service2-steps">

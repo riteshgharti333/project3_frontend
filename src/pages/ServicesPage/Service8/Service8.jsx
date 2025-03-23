@@ -14,6 +14,7 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 import axios from "axios";
 import { baseUrl } from "../../../main";
+import toast from "react-hot-toast";
 
 const Service8 = () => {
   const contentRef = useRef(null);
@@ -72,27 +73,23 @@ const Service8 = () => {
                 pagination={{ clickable: true }}
                 className="services-slide"
               >
-                {
-                  serviceImages?.map((item, index) => (
-                    <SwiperSlide key={index} className="service_slide">
-                      <img src={item} loading="lazy" alt="services" />
-                    </SwiperSlide>
-                  ))}
+                {serviceImages?.map((item, index) => (
+                  <SwiperSlide key={index} className="service_slide">
+                    <img src={item} loading="lazy" alt="services" />
+                  </SwiperSlide>
+                ))}
               </Swiper>
             </div>
             <h1>Baby Shower Photography by TK Production Film</h1>
             <p>
-              A baby shower is a beautiful celebration of love, joy, and new
-              beginnings. At TK Production Film, we specialize in capturing
-              these heartfelt moments with elegance and creativity. Whether it’s
-              an intimate gathering or a grand event, we ensure every special
-              detail, emotion, and laughter is beautifully preserved through our
-              expert photography and videography
+              Celebrate new beginnings with TK Production Film! We capture the
+              joy, love, and excitement of your baby shower with elegance and
+              creativity.
             </p>
           </div>
 
           <div className="service8-services">
-            <h1>Our Baby Shower Photography Services</h1>
+            <h1>What We Offer</h1>
 
             <ul>
               {service4Data.map((item) => (
@@ -108,24 +105,20 @@ const Service8 = () => {
           </div>
 
           <div className="service8-steps">
-            <h1>Our Service Steps</h1>
+            <h1>How It Works?</h1>
 
             <ul>
               {service4Steps.map((item) => (
                 <li key={item.no}>
                   <p>{item.no}</p>
                   <p>
-                    <span>{item.title} – </span> {item.desc}
+                    <span>{item.title}</span>
                   </p>
                 </li>
               ))}
             </ul>
 
-            <p>
-              With a commitment to excellence and attention to detail, TK
-              Production Film creates unforgettable wedding memories worldwide.
-              Let us capture your love story beautifully!
-            </p>
+            <p>Let us make your baby shower memories last forever!</p>
           </div>
         </div>
       </div>

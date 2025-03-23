@@ -1,139 +1,96 @@
-export const service1Data = [
-  {
-    title: "Wedding Photography",
-    desc: "Candid, traditional, and editorial-style photography to capture every precious moment.",
-  },
-  {
-    title: "Cinematic Wedding Films",
-    desc: "High-definition wedding films with expert storytelling and seamless editing.",
-  },
-  {
-    title: "Pre-Wedding Shoots",
-    desc: "Artistic and romantic couple shoots at breathtaking locations worldwide.",
-  },
-  {
-    title: "Luxury Wedding Albums",
-    desc: "Handcrafted, premium-quality albums to preserve your memories.",
-  },
-  {
-    title: "Live Streaming",
-    desc: "High-quality online streaming for loved ones who can’t attend.",
-  },
-  {
-    title: "Drone Photography & Videography",
-    desc: "Aerial shots for grand cinematic visuals.",
-  },
-];
-
 export const service1Steps = [
   {
     no: "01",
     title: "Consultation & Booking",
-    desc: "We discuss your vision, preferences, and requirements before finalizing the package.",
   },
   {
     no: "02",
-    title: "Pre-Planning & Location Scouting",
-    desc: "We help choose the perfect locations and plan the shoot accordingly.",
+    title: "Planning & Scouting",
   },
   {
     no: "03",
-    title: "Photography & Videography Execution",
-    desc: "Our expert team captures every detail with high-end equipment.",
+    title: "Shoot Day Execution",
   },
   {
     no: "04",
-    title: "Post-Production & Editing",
-    desc: "Professional editing enhances your photos and films for a cinematic finish.",
+    title: "Professional Editing",
   },
   {
     no: "05",
-    title: "Delivery & Final Review",
-    desc: "Your wedding album and video are delivered in high quality, ensuring perfection.",
+    title: "High-Quality Delivery",
   },
 ];
 
 //////////////////////////////////
 export const service2Data = [
   {
-    title: "Pre-Wedding Photography",
-    desc: "Candid, Romantic, and Cinematic shots that highlight your chemistry.",
+    title: "Candid, romantic photography",
   },
   {
-    title: "Pre-Wedding Films",
-    desc: "Beautifully crafted short films with creative storytelling and high-quality visuals.",
+    title: "Cinematic pre-wedding films",
   },
   {
-    title: "Destination Shoots",
-    desc: "Stunning pre-wedding shoots at picturesque locations worldwide.",
+    title: "Stunning destination shoots",
   },
   {
-    title: "Themed & Concept Shoots",
-    desc: "Customized themes based on your personality and love story.",
+    title: "Unique themed concepts",
   },
   {
-    title: "Drone Photography & Videography",
-    desc: "Aerial shots for a grand cinematic touch.",
+    title: "Epic drone visuals",
   },
   {
-    title: "Outfit & Styling Consultation",
-    desc: "Assistance in selecting the perfect attire and look for your shoot.",
+    title: "Outfit & styling tips",
   },
 ];
 
 export const service2Steps = [
   {
     no: "01",
-    title: "Consultation & Concept Planning",
-    desc: "We discuss ideas, themes, and locations based on your vision.",
+    title: "Consultation & Planning",
   },
   {
     no: "02",
-    title: "Location Scouting & Styling Guidance",
-    desc: "We help find the perfect backdrop and provide styling tips.",
+    title: "Location & Styling Prep",
   },
   {
     no: "03",
-    title: "Shoot Day Execution",
-    desc: "Our team captures stunning visuals using professional equipment.",
+    title: "Shoot Day Magic",
   },
   {
     no: "04",
-    title: "Post-Production & Editing",
-    desc: "High-quality editing enhances your photos and videos for a polished finish.",
+    title: "Professional Editing",
   },
   {
     no: "05",
-    title: "Final Delivery",
-    desc: "Your pre-wedding film and album are delivered in high resolution, ready to cherish forever.",
+    title: "High-Quality Delivery",
   },
 ];
 
 ///////////////////////////
 export const service3Data = [
   {
-    title: "Birthday Photography",
-    desc: "Candid and posed shots that capture every smile, emotion, and celebration.",
+    title: "Birthday shots",
+    desc: "Candid and posed",
   },
   {
-    title: "Birthday Films",
-    desc: "Cinematic video coverage that brings your special day to life.",
+    title: "Cinematic films",
+    desc: "Your day relived",
   },
   {
-    title: "Themed Photoshoots",
-    desc: "Custom backdrops, props, and setups tailored to your celebration theme.",
+    title: "Themed shoots",
+    desc: "Custom setups",
   },
   {
-    title: "Drone Photography & Videography",
-    desc: "Aerial shots for a grand cinematic perspective.",
+    title: "Drone visuals",
+    desc: "Grand aerials",
   },
   {
-    title: "Live Streaming",
-    desc: "Real-time coverage for friends and family who can’t attend.",
+    title: "Live streaming",
+    desc: "For absent loved ones",
   },
   {
-    title: "Highlight Reels & Social Media Edits",
-    desc: "Short, engaging videos perfect for sharing online.",
+    title: "Highlight reels",
+    desc: "Shareable clips",
   },
 ];
 
@@ -141,59 +98,54 @@ export const service3Steps = [
   {
     no: "01",
     title: "Consultation & Booking",
-    desc: "Understanding your event details, theme, and preferences.",
   },
   {
     no: "02",
     title: "Pre-Event Planning",
-    desc: "Location scouting, setup planning, and styling recommendations.",
   },
   {
     no: "03",
-    title: "Photography & Videography Execution",
-    desc: "Capturing the event with professional equipment and techniques.",
+    title: "Shoot Day Execution",
   },
   {
     no: "04",
-    title: "Post-Production & Editing",
-    desc: "Enhancing visuals with expert editing to create a stunning final product.",
+    title: "Professional Editing",
   },
   {
     no: "05",
-    title: "Delivery & Review",
-    desc: "High-quality photos and videos are delivered for you to cherish forever.",
+    title: "High-Quality Delivery",
   },
 ];
 /////////////////////////
 
 export const service4Data = [
   {
-    title: "Event Photography",
-    desc: "Capturing candid and posed moments with family and friends.",
+    title: "Event shots",
+    desc: "Candid and posed",
   },
   {
     title: "Maternity Portraits",
-    desc: "Beautiful portraits of the mother-to-be, highlighting this special journey.",
+    desc: "Mom-to-be glow",
   },
   {
-    title: "Family & Guest Portraits",
-    desc: "Ensuring every loved one is part of your cherished memories.",
+    title: "Family photos",
+    desc: "Loved ones included",
   },
   {
-    title: "Themed & Decor Photography",
-    desc: "Capturing venue décor, cake, gifts, and special moments.",
+    title: "Themed décor",
+    desc: "Details preserved",
   },
   {
-    title: "Cinematic Baby Shower Films",
-    desc: "A highlight video showcasing the joy and love of the event.",
+    title: "Cinematic films",
+    desc: "Heartfelt highlights",
   },
   {
-    title: "Drone Photography & Videography",
-    desc: "Aerial shots for a grand visual perspective.",
+    title: "Drone visuals",
+    desc: "Stunning aerials",
   },
   {
-    title: "Live Streaming",
-    desc: "Real-time coverage for family and friends who can’t attend.",
+    title: "Live streaming",
+    desc: "For distant guests",
   },
 ];
 
@@ -201,58 +153,53 @@ export const service4Steps = [
   {
     no: "01",
     title: "Consultation & Planning",
-    desc: "Understanding your event details, theme, and preferences.",
   },
   {
     no: "02",
-    title: "Pre-Event Setup",
-    desc: "Scouting locations, planning shots, and preparing the perfect setup.",
+    title: "Pre-Event Prep",
   },
   {
     no: "03",
-    title: "Photography & Videography Execution",
-    desc: "Capturing every special moment with professionalism and creativity.",
+    title: "Shoot Day Execution",
   },
   {
     no: "04",
-    title: "Post-Production & Editing",
-    desc: "Enhancing photos and videos for a polished, cinematic finish.",
+    title: "Professional Editing",
   },
   {
     no: "05",
-    title: "Final Delivery",
-    desc: "High-quality images and films delivered for you to cherish forever.",
+    title: "High-Quality Delivery",
   },
 ];
 /////////////////
 export const service5Data = [
   {
-    title: "Ceremony Photography",
-    desc: "Capturing the vows, emotions, and official signing with precision.",
+    title: "Ceremony shots",
+    desc: "Vows and signings",
   },
   {
-    title: "Candid Moments",
-    desc: "Natural and spontaneous shots that reflect genuine joy and love.",
+    title: "Candid moments",
+    desc: "Genuine joy",
   },
   {
-    title: "Couple Portraits",
-    desc: "Elegant and timeless portraits to commemorate your special day.",
+    title: "Couple portraits",
+    desc: "Timeless elegance",
   },
   {
-    title: "Family & Guest Photography",
-    desc: "Ensuring every loved one is part of your memories.",
+    title: "Family photos",
+    desc: "Loved ones included",
   },
   {
-    title: "Cinematic Civil Marriage Films",
-    desc: "Short wedding films that beautifully narrate your love story.",
+    title: "Cinematic films",
+    desc: "Short love stories",
   },
   {
-    title: "Drone Photography & Videography",
-    desc: "Aerial perspectives for breathtaking visuals.",
+    title: "Drone visuals",
+    desc: "Stunning aerials",
   },
   {
-    title: "Live Streaming",
-    desc: "Real-time coverage for family and friends who can’t attend.",
+    title: "Live streaming",
+    desc: "For absent guests",
   },
 ];
 
@@ -260,27 +207,22 @@ export const service5Steps = [
   {
     no: "01",
     title: "Consultation & Booking",
-    desc: "Understanding your ceremony details and vision.",
   },
   {
     no: "02",
     title: "Pre-Ceremony Planning",
-    desc: "Selecting locations, discussing key moments, and finalizing the shoot plan.",
   },
   {
     no: "03",
-    title: "Photography & Videography Execution",
-    desc: "Capturing every detail with professionalism and creativity.",
+    title: "Shoot Day Execution",
   },
   {
     no: "04",
-    title: "Post-Production & Editing",
-    desc: "Enhancing photos and videos for a polished, cinematic finish.",
+    title: "Professional Editing",
   },
   {
     no: "05",
-    title: "Delivery & Review",
-    desc: "High-quality images and films delivered in your preferred format.",
+    title: "High-Quality Delivery",
   },
 ];
 
@@ -288,28 +230,28 @@ export const service5Steps = [
 
 export const service6Data = [
   {
-    title: "Engagement Ceremony Photography",
-    desc: "Capturing rituals, emotions, and joyful moments with precision.",
+    title: "Ceremony shots",
+    desc: "Rituals and joy",
   },
   {
-    title: "Candid & Posed Portraits",
-    desc: "Natural and elegant couple portraits that reflect your unique bond.",
+    title: "Candid & posed portraits",
+    desc: "Your unique bond",
   },
   {
-    title: "Scenic Outdoor Shoots",
-    desc: "Romantic photography at breathtaking locations.",
+    title: "Scenic outdoor shoots",
+    desc: "Stunning backdrops",
   },
   {
-    title: "Engagement Cinematic Films",
-    desc: "A short film narrating your love story through stunning visuals.",
+    title: "Cinematic films",
+    desc: "Short love stories",
   },
   {
-    title: "Drone Photography & Videography",
-    desc: "Aerial perspectives for a cinematic touch.",
+    title: "Drone visuals",
+    desc: "Aerial beauty",
   },
   {
-    title: "Themed & Styled Shoots",
-    desc: "Personalized themes to match your love story.",
+    title: "Themed shoots",
+    desc: "Personalized styles.",
   },
 ];
 
@@ -317,55 +259,50 @@ export const service6Steps = [
   {
     no: "01",
     title: "Consultation & Planning",
-    desc: "Understanding your vision, preferred style, and locations.",
   },
   {
     no: "02",
-    title: "Location & Styling Guidance",
-    desc: "Helping you select the perfect backdrop and outfits.",
+    title: "Location & Styling Prep",
   },
   {
     no: "03",
-    title: "Photography & Videography Execution",
-    desc: "Capturing every beautiful moment with high-end equipment.",
+    title: "Shoot Day Execution",
   },
   {
     no: "04",
-    title: "Post-Production & Editing",
-    desc: "Enhancing photos and videos for a polished, professional finish.",
+    title: "Professional Editing",
   },
   {
     no: "05",
-    title: "Final Delivery",
-    desc: "High-quality images and films, ready to cherish forever.",
+    title: "5. High-Quality Delivery",
   },
 ];
 //////////////////
 
 export const service7Data = [
   {
-    title: "Individual Graduation Portraits",
-    desc: "Classic, candid, and creative shots to celebrate your achievement.",
+    title: "Individual portraits",
+    desc: "Classic and creative",
   },
   {
-    title: "Group Photography",
-    desc: "Capture the joy with friends, classmates, and family.",
+    title: "Group shots",
+    desc: "Friends and family",
   },
   {
-    title: "Graduation Ceremony Coverage",
-    desc: "Professional event photography for your big day.",
+    title: "Ceremony coverage",
+    desc: "Your big moment",
   },
   {
-    title: "Cinematic Graduation Films",
-    desc: "High-quality video coverage to relive the special moment.",
+    title: "Cinematic films",
+    desc: "Relive the day",
   },
   {
-    title: "Themed & Outdoor Shoots",
-    desc: "Personalized sessions at iconic locations.",
+    title: "Themed outdoor shoots",
+    desc: "Unique settings",
   },
   {
-    title: "Cap & Gown Portraits",
-    desc: "Elegant and timeless images to commemorate your success.",
+    title: "Cap & gown photos",
+    desc: "Timeless elegance",
   },
 ];
 
@@ -373,26 +310,21 @@ export const service7Steps = [
   {
     no: "01",
     title: "Consultation & Booking",
-    desc: "Understanding your vision and preferred style.",
   },
   {
     no: "02",
-    title: "Location & Styling Assistance",
-    desc: "Selecting the perfect setting and outfits for your shoot.",
+    title: "Location & Styling Prep",
   },
   {
     no: "03",
-    title: "Photography & Videography Execution",
-    desc: "Capturing stunning shots with expert lighting and composition.",
+    title: "Shoot Day Execution",
   },
   {
     no: "04",
-    title: "Post-Production & Editing",
-    desc: "Enhancing images and videos for a professional, polished look.",
+    title: "Professional Editing",
   },
   {
     no: "05",
-    title: "Final Delivery",
-    desc: "High-resolution photos and videos, ready to be cherished forever.",
+    title: "High-Quality Delivery",
   },
 ];

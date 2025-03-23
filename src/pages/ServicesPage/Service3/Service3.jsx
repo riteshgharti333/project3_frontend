@@ -18,6 +18,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
 import { baseUrl } from "../../../main";
+import toast from "react-hot-toast";
 
 const Service3 = () => {
   const contentRef = useRef(null);
@@ -42,7 +43,7 @@ const Service3 = () => {
         }
       } catch (error) {
         console.error("Error fetching service data:", error);
-        TbCodeAsterisk.error("Failed to fetch service data. Please try again.");
+        toast.error("Failed to fetch service data. Please try again.");
       }
     };
 
@@ -72,39 +73,34 @@ const Service3 = () => {
                 loop={true}
                 speed={1200}
                 autoplay={{ delay: 3000, disableOnInteraction: false }}
-              
                 className="services-slide"
               >
-                {
-                  serviceImages?.map((item, index) => (
-                    <SwiperSlide key={index} className="service_slide">
-                      <img src={item} loading="lazy" alt="services" />
-                    </SwiperSlide>
-                  ))}
+                {serviceImages?.map((item, index) => (
+                  <SwiperSlide key={index} className="service_slide">
+                    <img src={item} loading="lazy" alt="services" />
+                  </SwiperSlide>
+                ))}
               </Swiper>
             </div>
             <h1>Pre Wedding Film by TK Production Film</h1>
             <p>
-              A pre-wedding shoot is the perfect way to celebrate your love
-              story before the big day. At TK Production Film, we specialize in
-              capturing the chemistry, emotions, and unique connection between
-              couples through breathtaking pre-wedding photography and film.
-              Whether in iconic cityscapes, lush landscapes, or dreamy
-              international locations like Lisbon, Portugal, our expert team
-              ensures your love story is beautifully told.
+              At TK Production Film, we turn your love story into a cinematic
+              pre-wedding masterpiece. With 16+ years of expertise, we capture
+              your chemistry in stunning locations—from lush forests to vibrant
+              cities like Lisbon, Portugal. Our heartfelt films blend creativity
+              and passion, creating timeless memories you’ll treasure.
             </p>
           </div>
 
           <div className="service3-services">
-            <h1>Our Pre-Wedding Services</h1>
+            <h1>What We Offer</h1>
 
             <ul>
               {service2Data.map((item) => (
                 <li key={item.title}>
                   <FaCheck className="check-icon" />
                   <div className="services-desc">
-                    <p>{item.title} :&nbsp;</p>
-                    <p>{item.desc}</p>
+                    <p>{item.title}</p>
                   </div>
                 </li>
               ))}
@@ -112,24 +108,20 @@ const Service3 = () => {
           </div>
 
           <div className="service3-steps">
-            <h1>Our Service Steps</h1>
+            <h1>How It Works?</h1>
 
             <ul>
               {service2Steps.map((item) => (
                 <li key={item.no}>
                   <p>{item.no}</p>
                   <p>
-                    <span>{item.title} – </span> {item.desc}
+                    <span>{item.title}</span>
                   </p>
                 </li>
               ))}
             </ul>
 
-            <p>
-              With creativity, passion, and technical expertise, TK Production
-              Film makes your pre-wedding moments truly magical. Let us turn
-              your love story into a cinematic masterpiece!
-            </p>
+            <p>Let’s make your pre-wedding moments magical!</p>
           </div>
 
           <div className="service3-steps">

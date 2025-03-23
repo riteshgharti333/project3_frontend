@@ -126,12 +126,14 @@ const About = () => {
       <div className="about-content" ref={aboutContentRef}>
         <div className="about-content-left">
           <div className="about-content-left-top">
-            <img
-              src={founder_img}
-              alt=""
+            <div
+              className="about-content-left-top-desc"
               data-aos="fade-up"
               data-aos-offset="700"
-            />
+            >
+              <img src={founder_img} alt="" />
+              <p>Founder & Creative Director </p>
+            </div>
 
             <div className="about-content-left-top-right">
               <h1>

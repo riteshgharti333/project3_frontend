@@ -6,13 +6,15 @@ import { FaCheck } from "react-icons/fa";
 import ServiceContact from "../../../components/ServiceContact/ServiceContact";
 import { service7Data, service7Steps } from "../../../assets/servicesData";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-fade";
-import { servicesImgs } from "../../../assets/data";
+import axios from "axios";
+import { baseUrl } from "../../../main";
+import toast from "react-hot-toast";
 
 const Service9 = () => {
   const contentRef = useRef(null);
@@ -22,6 +24,27 @@ const Service9 = () => {
       contentRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+   const [serviceImages, setServiceImages] = useState();
+  
+    useEffect(() => {
+      const getServiceData = async () => {
+        try {
+          const { data } = await axios.get(
+            `${baseUrl}/services/graduation-photography/67de7035aa6520fad7a06663`
+          );
+  
+          if (data && data.serviceImages?.images) {
+            setServiceImages(data.serviceImages.images);
+          }
+        } catch (error) {
+          console.error("Error fetching service data:", error);
+          toast.error("Failed to fetch service data. Please try again.");
+        }
+      };
+  
+      getServiceData();
+    }, []);
 
   return (
     <div className="service9">
@@ -50,26 +73,21 @@ const Service9 = () => {
                 pagination={{ clickable: true }}
                 className="services-slide"
               >
-                {servicesImgs.map((item, index) => (
+                {serviceImages?.map((item, index) => (
                   <SwiperSlide key={index} className="service_slide">
-                    <img src={item.img} alt="services" />
+                    <img src={item} loading="lazy" alt="services" />
                   </SwiperSlide>
                 ))}
               </Swiper>
             </div>
             <h1>Graduation Photography by TK Production Film</h1>
             <p>
-              Graduation is a milestone achievement, marking years of dedication
-              and hard work. At TK Production Film, we specialize in capturing
-              this proud moment with stunning photography and cinematic visuals.
-              Whether it's an individual session, a group celebration, or a full
-              graduation event, we ensure that your success story is beautifully
-              documented.
+            Celebrate your milestone with TK Production Film! We capture your graduation’s pride and joy with stunning photography and cinematic visuals.
             </p>
           </div>
 
           <div className="service9-services">
-            <h1>Our Graduation Photography Services</h1>
+            <h1>What We Offer</h1>
 
             <ul>
               {service7Data.map((item) => (
@@ -85,23 +103,21 @@ const Service9 = () => {
           </div>
 
           <div className="service9-steps">
-            <h1>Our Service Steps</h1>
+            <h1>How It Works?</h1>
 
             <ul>
               {service7Steps.map((item) => (
                 <li key={item.no}>
                   <p>{item.no}</p>
                   <p>
-                    <span>{item.title} – </span> {item.desc}
+                    <span>{item.title}</span>
                   </p>
                 </li>
               ))}
             </ul>
 
             <p>
-              At TK Production Film, we make your graduation memories last a
-              lifetime. Let us celebrate your achievement with photography that
-              reflects your success!
+            Let us make your success unforgettable!
             </p>
           </div>
         </div>

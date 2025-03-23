@@ -13,9 +13,21 @@
       background-image: url("../../../assets/images/bg22.jpg");
       background-size: cover;
       background-repeat: no-repeat;
-      background-position: center;
+      background-position: top;
       height: 500px;
       position: relative;
+      z-index: 1;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: -1;
+      }
 
       @include md {
         height: 300px;

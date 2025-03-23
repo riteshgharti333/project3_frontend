@@ -23,6 +23,7 @@ import Service9 from "./pages/ServicesPage/Service9/Service9.jsx";
 import { ScrollProvider, useScrollContext } from "./context/ScrollContext.jsx";
 
 function App() {
+  
   const ScrollToTop = () => {
     const { pathname } = useLocation();
     const { skipScroll, setSkipScroll } = useScrollContext();
@@ -52,7 +53,7 @@ function App() {
             {/* services */}
             <Route path="/wedding-photography" element={<Service1 />} />
             <Route path="/wedding-cinematography" element={<Service2 />} />
-            <Route path="/pre-wedding-films" element={<Service3 />} />
+            <Route path="/pre-wedding-film" element={<Service3 />} />
             <Route path="/pre-wedding-photography" element={<Service4 />} />
             <Route path="/civil-marriage-photography" element={<Service5 />} />
             <Route

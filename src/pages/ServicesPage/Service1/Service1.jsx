@@ -2,9 +2,8 @@ import "./Service1.scss";
 
 import ServicePageSidebar from "../ServicePageSidebar/ServicePageSidebar";
 
-import { FaCheck } from "react-icons/fa";
 import ServiceContact from "../../../components/ServiceContact/ServiceContact";
-import { service1Data, service1Steps } from "../../../assets/servicesData";
+import { service1Steps } from "../../../assets/servicesData";
 
 import { useEffect, useRef, useState } from "react";
 
@@ -14,6 +13,7 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 import axios from "axios";
 import { baseUrl } from "../../../main";
+import toast from "react-hot-toast";
 
 const Service1 = () => {
   const contentRef = useRef(null);
@@ -82,49 +82,39 @@ const Service1 = () => {
 
             <h1>Wedding Photography by TK Production Film</h1>
             <p>
-              At TK Production Film, we bring your love story to life through
-              stunning wedding photography and cinematography. Led by Taufeq
-              Khan, with over 16 years of experience and 700+ weddings captured,
-              we specialize in creating timeless memories that reflect the
-              beauty, emotions, and joy of your special day.
+              Capture your love story with TK Production Film. Led by Taufeq
+              Khan with 16+ years and 800+ weddings, we create timeless memories
+              through stunning photography and cinematic films.
+            </p>
+            <p>
+              We specialize in turning your wedding day into a visual
+              masterpiece. From the soft glances during the vows to the joyous
+              laughter at the reception, our team captures every moment with
+              artistry and precision. Whether you love candid shots that reveal
+              raw emotions, traditional portraits that honor timeless elegance,
+              or editorial-style images with a modern flair, we tailor our
+              approach to your unique style. Using top-tier equipment and
+              creative techniques, we ensure every detail—your dress, the
+              flowers, the smiles—shines through in vibrant, high-quality photos
+              you’ll cherish forever.
             </p>
           </div>
 
-          <div className="service1-services">
-            <h1>Our Services</h1>
-
-            <ul>
-              {service1Data.map((item) => (
-                <li key={item.title}>
-                  <FaCheck className="check-icon" />
-                  <div className="services-desc">
-                    <p>{item.title} :&nbsp;</p>
-                    <p>{item.desc}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-
           <div className="service1-steps">
-            <h1>Our Service Steps</h1>
+            <h1>How It Works?</h1>
 
             <ul>
               {service1Steps.map((item) => (
                 <li key={item.no}>
                   <p>{item.no}</p>
                   <p>
-                    <span>{item.title} – </span> {item.desc}
+                    <span>{item.title}</span> {item.desc}
                   </p>
                 </li>
               ))}
             </ul>
 
-            <p>
-              With a commitment to excellence and attention to detail, TK
-              Production Film creates unforgettable wedding memories worldwide.
-              Let us capture your love story beautifully!
-            </p>
+            <p>Let us make your special day unforgettable!</p>
           </div>
         </div>
       </div>

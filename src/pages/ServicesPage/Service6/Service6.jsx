@@ -15,6 +15,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { baseUrl } from "../../../main";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const Service6 = () => {
   const contentRef = useRef(null);
@@ -85,16 +86,12 @@ const Service6 = () => {
               Engagement Photography & Couple Portraits by TK Production Film
             </h1>
             <p>
-              Your engagement marks the beginning of a beautiful journey, and at
-              TK Production Film, we capture this special moment with creativity
-              and elegance. Whether it’s an intimate proposal, a grand
-              engagement celebration, or a romantic couple shoot, our expert
-              photography ensures your love story is beautifully preserved.
+            At TK Production Film, we capture your engagement’s magic—whether it’s a proposal, celebration, or romantic shoot—with creativity and elegance.
             </p>
           </div>
 
           <div className="service6-services">
-            <h1>Our Engagement Photography & Couple Portrait Services</h1>
+            <h1>What We Offer</h1>
 
             <ul>
               {service6Data.map((item) => (
@@ -110,23 +107,21 @@ const Service6 = () => {
           </div>
 
           <div className="service6-steps">
-            <h1>Our Service Steps</h1>
+            <h1>How It Works?</h1>
 
             <ul>
               {service6Steps.map((item) => (
                 <li key={item.no}>
                   <p>{item.no}</p>
                   <p>
-                    <span>{item.title} – </span> {item.desc}
+                    <span>{item.title}</span> {item.desc}
                   </p>
                 </li>
               ))}
             </ul>
 
             <p>
-              At TK Production Film, we turn your engagement into timeless
-              memories. Let us capture the love, excitement, and beauty of your
-              journey together!
+            Let us preserve your love story beautifully!
             </p>
           </div>
         </div>

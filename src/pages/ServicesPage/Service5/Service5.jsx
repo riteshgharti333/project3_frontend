@@ -5,23 +5,45 @@ import ServicePageSidebar from "../ServicePageSidebar/ServicePageSidebar";
 import { FaCheck } from "react-icons/fa";
 import ServiceContact from "../../../components/ServiceContact/ServiceContact";
 import { service5Data, service5Steps } from "../../../assets/servicesData";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-fade";
-import { servicesImgs } from "../../../assets/data";
+import axios from "axios";
+import { baseUrl } from "../../../main";
+import toast from "react-hot-toast";
 
 const Service5 = () => {
-
   const contentRef = useRef(null);
-  
-    const scrollToContent = () => {
-      if (contentRef.current) {
-        contentRef.current.scrollIntoView({ behavior: "smooth" });
+
+  const scrollToContent = () => {
+    if (contentRef.current) {
+      contentRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const [serviceImages, setServiceImages] = useState();
+
+  useEffect(() => {
+    const getServiceData = async () => {
+      try {
+        const { data } = await axios.get(
+          `${baseUrl}/services/civil-marriage-photography/67de712faa6520fad7a0666f`
+        );
+
+        if (data && data.serviceImages?.images) {
+          setServiceImages(data.serviceImages.images);
+        }
+      } catch (error) {
+        console.error("Error fetching service data:", error);
+        toast.error("Failed to fetch service data. Please try again.");
       }
     };
+
+    getServiceData();
+  }, []);
 
   return (
     <div className="service5">
@@ -40,7 +62,7 @@ const Service5 = () => {
 
         <div className="service5-container-content" ref={contentRef}>
           <div className="service5-container-content-top">
-          <div className="services-img-slide">
+            <div className="services-img-slide">
               <Swiper
                 modules={[EffectFade, Autoplay]}
                 effect="fade"
@@ -50,25 +72,23 @@ const Service5 = () => {
                 pagination={{ clickable: true }}
                 className="services-slide"
               >
-                {servicesImgs.map((item, index) => (
+                {serviceImages?.map((item, index) => (
                   <SwiperSlide key={index} className="service_slide">
-                    <img src={item.img} alt="services" />
+                    <img src={item} loading="lazy" alt="services" />
                   </SwiperSlide>
                 ))}
               </Swiper>
             </div>
             <h1>Civil Marriage Photography by TK Production Film</h1>
             <p>
-              A civil marriage is a beautiful and intimate celebration of love,
-              and at TK Production Film, we specialize in capturing its essence
-              with elegance and authenticity. Whether it’s a simple registry
-              ceremony or a grand celebration with loved ones, our expert
-              photography ensures every heartfelt moment is preserved forever.
+              At TK Production Film, we capture the beauty and intimacy of your
+              civil marriage with elegance. From simple registry moments to
+              grand celebrations, we preserve every heartfelt detail.
             </p>
           </div>
 
           <div className="service5-services">
-            <h1>Our Civil Marriage Photography Services</h1>
+            <h1>What We Offer</h1>
 
             <ul>
               {service5Data.map((item) => (
@@ -84,22 +104,20 @@ const Service5 = () => {
           </div>
 
           <div className="service5-steps">
-            <h1>Our Service Steps</h1>
+            <h1>How It Works?</h1>
 
             <ul>
               {service5Steps.map((item) => (
                 <li key={item.no}>
                   <p>{item.no}</p>
                   <p>
-                    <span>{item.title} – </span> {item.desc}
+                    <span>{item.title}</span>
                   </p>
                 </li>
               ))}
             </ul>
 
-            <p>
-            At TK Production Film, we turn your civil marriage into a timeless visual story. Let us capture your love with beauty and elegance!
-            </p>
+            <p>Let us tell your civil marriage story beautifully!</p>
           </div>
         </div>
       </div>

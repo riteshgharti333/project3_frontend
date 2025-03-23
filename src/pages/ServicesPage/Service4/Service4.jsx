@@ -11,10 +11,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-fade";
-import { servicesImgs } from "../../../assets/data";
 import Video from "../../../components/Video/Video";
 import axios from "axios";
 import { baseUrl } from "../../../main";
+import toast from "react-hot-toast";
 
 const Service4 = () => {
   const contentRef = useRef(null);
@@ -70,43 +70,55 @@ const Service4 = () => {
                 loop={true}
                 speed={1200}
                 autoplay={{ delay: 3000, disableOnInteraction: false }}
-            
                 className="services-slide"
               >
-                {
-                  serviceImages?.map((item, index) => (
-                    <SwiperSlide key={index} className="service_slide">
-                      <img src={item} loading="lazy" alt="services" />
-                    </SwiperSlide>
-                  ))}
+                {serviceImages?.map((item, index) => (
+                  <SwiperSlide key={index} className="service_slide">
+                    <img src={item} loading="lazy" alt="services" />
+                  </SwiperSlide>
+                ))}
               </Swiper>
             </div>
             <h1>Pre-Wedding Photography by TK Production Film</h1>
             <p>
-              A pre-wedding shoot is the perfect way to celebrate your love
-              story before the big day. At TK Production Film, we specialize in
-              capturing the chemistry, emotions, and unique connection between
-              couples through breathtaking pre-wedding photography and film.
-              Whether in iconic cityscapes, lush landscapes, or dreamy
-              international locations like Lisbon, Portugal, our expert team
-              ensures your love story is beautifully told.
+              At TK Production Film, we turn your love story into a cinematic
+              pre-wedding masterpiece. With 16+ years of expertise, we capture
+              your chemistry in stunning locations—from lush forests to vibrant
+              cities like Lisbon, Portugal. Our heartfelt films blend creativity
+              and passion, creating timeless memories you’ll treasure.
             </p>
           </div>
 
           <div className="service4-services">
-            <h1>Our Pre-Wedding Services</h1>
+            <h1>What We Offer</h1>
 
             <ul>
               {service2Data.map((item) => (
                 <li key={item.title}>
                   <FaCheck className="check-icon" />
                   <div className="services-desc">
-                    <p>{item.title} :&nbsp;</p>
-                    <p>{item.desc}</p>
+                    <p>{item.title}</p>
                   </div>
                 </li>
               ))}
             </ul>
+          </div>
+
+          <div className="service4-steps">
+            <h1>How It Works?</h1>
+
+            <ul>
+              {service2Steps.map((item) => (
+                <li key={item.no}>
+                  <p>{item.no}</p>
+                  <p>
+                    <span>{item.title}</span>
+                  </p>
+                </li>
+              ))}
+            </ul>
+
+            <p>Let’s make your pre-wedding moments magical!</p>
           </div>
 
           <div className="service4-steps">
